@@ -1,40 +1,75 @@
-# Sella_Salix_FinalProject_CUOA
-Final project for the Business Strategy and Marketing Management Program at CUOA Business School. This repository contains the strategic analysis, business proposal, and website redesign concept developed to evaluate the integration of selected business units from Sella and Salix.
+# React + TypeScript + Vite
 
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-# Sella × Salix Business Strategy Project
+Currently, two official plugins are available:
 
-## Overview
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-This repository contains the final project developed for the **Business Strategy and Marketing Management Program** at **CUOA Business School**.
+## React Compiler
 
-The project focuses on evaluating the strategic feasibility of integrating selected business units from **Sella** and **Salix**. Our team analyzed the market, business models, organizational synergies, and potential value creation to support a strategic recommendation.
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-In addition to contributing to the overall business strategy, I proposed and developed a **website redesign concept** aligned with our final recommendation. The redesign aims to communicate the new strategic positioning, improve user experience, and provide a modern digital presence reflecting the proposed organizational integration.
+## Expanding the ESLint configuration
 
-## Project Scope
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-- Business and market analysis
-- Strategic assessment of Sella and Salix
-- Evaluation of integration opportunities
-- Business strategy proposal
-- Website redesign concept
-- Final presentation and supporting materials
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-## My Contributions
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-- Contributed to the development of the overall business strategy.
-- Proposed the website redesign initiative to support the strategic recommendation.
-- Designed and developed the frontend prototype for the new website concept.
-- Focused on improving user experience, information architecture, and visual communication aligned with the proposed business strategy.
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 
-## Technologies (Website Prototype)
+```
 
-- React
-- TypeScript
-- Tailwind CSS
-- Vite
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-## Disclaimer
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-This repository was created for academic purposes as part of the Business Strategy and Marketing Management Program at CUOA Business School. The analyses, recommendations, and website concept represent the work of the project team and are intended exclusively for educational purposes.
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+
+```
