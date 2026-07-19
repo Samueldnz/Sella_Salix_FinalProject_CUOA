@@ -69,7 +69,9 @@ export function Header() {
                 font-medium
                 text-text-secondary
                 transition-colors
-                hover:text-primary
+                duration-200
+                hover:text-accent
+                cursor-pointer
               "
             >
               {item.label}
@@ -89,7 +91,8 @@ export function Header() {
               font-medium
               text-white
               transition-all
-              hover:bg-primary-hover
+              duration-300
+              hover:bg-accent
             "
           >
             Contact Us
@@ -119,14 +122,21 @@ export function Header() {
               <a
                 key={item.label}
                 href={item.href}
-                className="py-4 text-text-secondary transition hover:text-primary"
+                className="py-4 text-text-secondary transition-colors duration-200 hover:text-accent"
                 onClick={() => setOpen(false)}
               >
                 {item.label}
               </a>
             ))}
 
-            <button className="mt-6 rounded-full bg-primary py-3 text-white">
+            <button className="mt-6
+              rounded-full
+              bg-primary
+              py-3
+              text-white
+              transition-all
+              duration-300
+              hover:bg-accent">
               Contact Us
             </button>
           </nav>
