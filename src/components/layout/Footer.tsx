@@ -1,26 +1,23 @@
-import { Mail, Phone, Building2, Factory, GraduationCap, Cookie } from "lucide-react";
+import { Mail, Phone, Building2, Factory, GraduationCap, Cookie, FileText } from "lucide-react";
 import { FaLinkedinIn, FaInstagram } from "react-icons/fa6";
 import { useLanguage } from "../../context/LanguageContext";
 import type { LegalDocType } from "../legal/LegalModal";
+import { Logo } from "../brand/Logo";
 
 interface FooterProps {
   onOpenLegal: (doc: LegalDocType) => void;
   onOpenCookiePreferences: () => void;
+  onNavigateHome: () => void;
+  onNavigateDossier: () => void;
 }
 
-export function Footer({ onOpenLegal, onOpenCookiePreferences }: FooterProps) {
+export function Footer({
+  onOpenLegal,
+  onOpenCookiePreferences,
+  onNavigateHome,
+  onNavigateDossier,
+}: FooterProps) {
   const { language, setLanguage, t } = useLanguage();
-
-  const navLinks = [
-    { label: t.nav.home, href: "#" },
-    { label: t.nav.heritage, href: "#heritage" },
-    { label: t.nav.expertise, href: "#expertise" },
-    { label: t.nav.certifications, href: "#certifications" },
-    { label: t.nav.technology, href: "#technology" },
-    { label: t.nav.process, href: "#process" },
-    { label: t.nav.about, href: "#about" },
-    { label: t.nav.contact, href: "#contact" },
-  ];
 
   return (
     <footer className="border-t border-border bg-background">
@@ -28,21 +25,12 @@ export function Footer({ onOpenLegal, onOpenCookiePreferences }: FooterProps) {
         <div className="grid gap-14 lg:grid-cols-12">
           {/* Brand Info & Mission (Col 1-5) */}
           <div className="lg:col-span-5 space-y-6">
-            <a href="#" className="flex items-center gap-3.5">
-              <img
-                src="/logo.svg"
-                alt="Nexofarm Logo"
-                className="h-12 w-auto"
-              />
-              <div>
-                <span className="font-roman text-2xl font-bold tracking-wider text-primary">
-                  NEXOFARM
-                </span>
-                <p className="text-[10px] uppercase tracking-[0.24em] text-text-secondary font-medium">
-                  Sella & Salix Synergy · Vicenza
-                </p>
-              </div>
-            </a>
+            <button
+              onClick={onNavigateHome}
+              className="group flex items-center text-left focus:outline-none cursor-pointer"
+            >
+              <Logo variant="horizontal" size="md" />
+            </button>
 
             <p className="text-sm leading-relaxed text-text-secondary max-w-md">
               {t.footer.description}
@@ -69,7 +57,7 @@ export function Footer({ onOpenLegal, onOpenCookiePreferences }: FooterProps) {
               <div className="ml-4 inline-flex items-center rounded-full border border-border bg-surface p-1 text-xs font-semibold">
                 <button
                   onClick={() => setLanguage("en")}
-                  className={`rounded-full px-2.5 py-0.5 transition-colors ${
+                  className={`rounded-full px-2.5 py-0.5 transition-colors cursor-pointer ${
                     language === "en" ? "bg-primary text-white" : "text-text-secondary hover:text-text"
                   }`}
                 >
@@ -77,20 +65,12 @@ export function Footer({ onOpenLegal, onOpenCookiePreferences }: FooterProps) {
                 </button>
                 <button
                   onClick={() => setLanguage("it")}
-                  className={`rounded-full px-2.5 py-0.5 transition-colors ${
+                  className={`rounded-full px-2.5 py-0.5 transition-colors cursor-pointer ${
                     language === "it" ? "bg-primary text-white" : "text-text-secondary hover:text-text"
                   }`}
                 >
                   IT
                 </button>
-              </div>
-            </div>
-
-            {/* Academic Roots Badge */}
-            <div className="pt-2">
-              <div className="inline-flex items-center gap-2 rounded-xl border border-primary/15 bg-primary/5 px-3.5 py-2 text-xs text-text-secondary">
-                <GraduationCap size={16} className="text-primary shrink-0" />
-                <span>{t.footer.cuoaNote}</span>
               </div>
             </div>
           </div>
@@ -101,17 +81,51 @@ export function Footer({ onOpenLegal, onOpenCookiePreferences }: FooterProps) {
               {t.footer.navTitle}
             </h3>
 
-            <ul className="mt-5 space-y-2.5">
-              {navLinks.map((item) => (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    className="text-xs sm:text-sm text-text-secondary transition-colors hover:text-accent"
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
+            <ul className="mt-5 space-y-3 text-xs sm:text-sm">
+              <li>
+                <button
+                  onClick={onNavigateHome}
+                  className="text-text-secondary transition-colors hover:text-accent cursor-pointer text-left"
+                >
+                  {t.nav.home}
+                </button>
+              </li>
+              <li>
+                <a
+                  href="#expertise"
+                  onClick={onNavigateHome}
+                  className="text-text-secondary transition-colors hover:text-accent"
+                >
+                  {t.nav.expertise}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#heritage"
+                  onClick={onNavigateHome}
+                  className="text-text-secondary transition-colors hover:text-accent"
+                >
+                  {t.nav.heritage}
+                </a>
+              </li>
+              <li>
+                <button
+                  onClick={onNavigateDossier}
+                  className="inline-flex items-center gap-1.5 font-medium text-primary hover:text-accent transition-colors cursor-pointer text-left"
+                >
+                  <FileText size={14} className="text-gold-hover" />
+                  <span>{t.nav.dossier}</span>
+                </button>
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  onClick={onNavigateHome}
+                  className="text-text-secondary transition-colors hover:text-accent"
+                >
+                  {t.nav.contact}
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -155,8 +169,25 @@ export function Footer({ onOpenLegal, onOpenCookiePreferences }: FooterProps) {
           </div>
         </div>
 
+        {/* Academic & Conceptual Disclaimer Banner - As requested by user */}
+        <div className="mt-14 rounded-2xl border border-gold/40 bg-gold-subtle p-6 shadow-2xs">
+          <div className="flex items-start gap-3.5">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gold/20 text-gold-hover">
+              <GraduationCap size={20} />
+            </div>
+            <div className="space-y-1">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-gold-hover">
+                CUOA Business School · Academic Capstone Disclosure
+              </span>
+              <p className="text-xs sm:text-sm leading-relaxed text-text-secondary">
+                {t.footer.cuoaNote}
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Bottom Legal & Compliance Strip */}
-        <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-border pt-8 text-xs text-text-secondary md:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between gap-6 border-t border-border pt-8 text-xs text-text-secondary md:flex-row">
           <p>{t.footer.rights}</p>
 
           <div className="flex flex-wrap items-center gap-6">

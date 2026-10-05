@@ -1,12 +1,9 @@
 export interface TranslationType {
   nav: {
     home: string;
-    heritage: string;
     expertise: string;
-    technology: string;
-    process: string;
-    certifications: string;
-    about: string;
+    heritage: string;
+    dossier: string;
     contact: string;
     ctaContact: string;
   };
@@ -43,6 +40,24 @@ export interface TranslationType {
     synergySubtitle: string;
     synergyDesc: string;
     cuoaBadge: string;
+  };
+  explorer: {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    tabs: {
+      id: string;
+      label: string;
+      category: string;
+      tagline: string;
+      activeMolecule: string;
+      deliverySystem: string;
+      facilityOrigin: string;
+      batchSpecs: string;
+      clinicalPurity: string;
+      stabilityProfile: string;
+      description: string;
+    }[];
   };
   video: {
     eyebrow: string;
@@ -102,6 +117,45 @@ export interface TranslationType {
       description: string;
       deliverable: string;
     }[];
+  };
+  dossierPage: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    backHome: string;
+    academicContextTitle: string;
+    academicContextBadge: string;
+    academicContextText: string;
+    conceptualDisclaimer: string;
+    objectivesTitle: string;
+    objectives: {
+      num: string;
+      title: string;
+      desc: string;
+    }[];
+    synergyMatrixTitle: string;
+    synergyMatrixHeaders: {
+      dimension: string;
+      sella: string;
+      salix: string;
+      nexofarm: string;
+    };
+    synergyRows: {
+      dimension: string;
+      sella: string;
+      salix: string;
+      nexofarm: string;
+    }[];
+    marketAnalysisTitle: string;
+    marketPoints: {
+      title: string;
+      stat: string;
+      desc: string;
+    }[];
+    regulatoryTitle: string;
+    regulatoryText: string;
+    conclusionsTitle: string;
+    conclusionsText: string;
   };
   cta: {
     badge: string;
@@ -193,14 +247,11 @@ export interface TranslationType {
 export const translations: Record<"en" | "it", TranslationType> = {
   en: {
     nav: {
-      home: "Home",
-      heritage: "Heritage & Synergy",
-      expertise: "CDMO Expertise",
-      technology: "Technology",
-      process: "Process",
-      certifications: "Quality Standards",
-      about: "About",
-      contact: "Contact",
+      home: "Overview",
+      expertise: "CDMO & Expertise",
+      heritage: "Heritage (1920–1998)",
+      dossier: "Case Study & Dossier",
+      contact: "Contact Labs",
       ctaContact: "Request Consultation",
     },
     hero: {
@@ -251,6 +302,70 @@ export const translations: Record<"en" | "it", TranslationType> = {
       synergyDesc:
         "By merging Sella's century-long galenic rigor with Salix's high-speed nutraceutical CDMO scale, Nexofarm delivers fully integrated solutions: topical high-performance dermocosmetics paired with oral nutricosmetics, all under one roof.",
       cuoaBadge: "Academic Conception: CUOA Business School · Altavilla Vicentina",
+    },
+    explorer: {
+      eyebrow: "Interactive Formulation Explorer",
+      title: "The Four Specialized Disciplines in Action",
+      subtitle:
+        "Select a scientific domain below to inspect real-time formulation parameters, delivery architectures, and clinical quality standards.",
+      tabs: [
+        {
+          id: "biotech",
+          label: "Biotechnology & Actives",
+          category: "Cellular Bio-Fermentation",
+          tagline: "High-affinity molecular actives engineered from sustainable botanicals.",
+          activeMolecule: "Salicin & Botanical Polyphenols (Derived from Salix Alba Willow Bark)",
+          deliverySystem: "Supercritical CO2 Botanical Extraction & Liposomal Phospholipid Bilayer",
+          facilityOrigin: "Research & Development Bio-Lab · Schio (VI)",
+          batchSpecs: "Liquid Concentrate & Micro-powder · 99.4% Active Titration",
+          clinicalPurity: "99.4% HPLC Purity",
+          stabilityProfile: "36 Months at ICH Zone II Conditions",
+          description:
+            "Proprietary bio-fermentation isolates high-potency salicin and antioxidant polyphenols, dramatically reducing inflammatory markers and stimulating cellular collagen synthesis without synthetic additives.",
+        },
+        {
+          id: "dermo",
+          label: "Clinical Dermocosmetics",
+          category: "Advanced Topical Formulations",
+          tagline: "Pharmaceutical precision infused into luxurious Italian sensory textures.",
+          activeMolecule: "Biomimetic Acetyl Hexapeptide-8 + Ceramide NP Complex",
+          deliverySystem: "Lamellar Airless Emulsion with Micro-droplet Penetration",
+          facilityOrigin: "Dermatological Formulation Suite · Schio (VI)",
+          batchSpecs: "Airless Dispensers & Sterile Ampoules · 50ml to 1,000L Batches",
+          clinicalPurity: "Dermatologically Tested / Hypoallergenic",
+          stabilityProfile: "Challenge Tested · Zero Parabens or Silicones",
+          description:
+            "Combines pharmaceutical barrier repair with haute-couture skin absorption. Formulated in Class C cleanrooms to ensure clinical safety on sensitive and post-procedure skins.",
+        },
+        {
+          id: "nutra",
+          label: "Advanced Nutricosmetics",
+          category: "Systemic Oral Beauty-From-Within",
+          tagline: "Targeting skin elasticity and antioxidant defense from the inside out.",
+          activeMolecule: "Hydrolyzed Type I/III Bioactive Marine Collagen Peptides + CoQ10",
+          deliverySystem: "Microencapsulated Liquid Stick Packs & Multi-Layer Effervescent Tablets",
+          facilityOrigin: "10,000+ m² Automated CDMO Facility · Monte di Malo (VI)",
+          batchSpecs: "High-speed Single Dose Stick Packs (15ml) · 2M units/month capacity",
+          clinicalPurity: "100% EFSA Compliant Nutrients",
+          stabilityProfile: "Microencapsulation Protected against Gastric Acidity",
+          description:
+            "Engineered to work in clinical synergy with topical dermocosmetics. Microencapsulation shields unstable antioxidants during digestion, maximizing intestinal absorption and dermal bioavailability.",
+        },
+        {
+          id: "galenics",
+          label: "Galenics & Pharma CDMO",
+          category: "AIFA Certified Industrial Production",
+          tagline: "Over a century of pharmaceutical ethics applied to modern contract manufacturing.",
+          activeMolecule: "Pharmacopoeial Galenic Preparations & Class IIa/IIb Medical Device Actives",
+          deliverySystem: "Sterile Cleanroom Blistering, Vials & Automated High-Volume Lines",
+          facilityOrigin: "GMP Certified Pharmaceutical Works · Schio & Monte di Malo (VI)",
+          batchSpecs: "Full Lot Release with Analytical Certificate of Analysis (CoA)",
+          clinicalPurity: "AIFA & European Pharmacopoeia (Ph. Eur.) Grade",
+          stabilityProfile: "ICH Q1A Accelerated Stability Validated (40°C/75% RH)",
+          description:
+            "Full turnkey contract development and manufacturing organization (CDMO) services, offering complete technical dossiers (CTD), regulatory notifications, and Qualified Person batch release.",
+        },
+      ],
     },
     video: {
       eyebrow: "Discover Nexofarm",
@@ -452,6 +567,94 @@ export const translations: Record<"en" | "it", TranslationType> = {
         },
       ],
     },
+    dossierPage: {
+      badge: "Academic Case Study & Scientific Dossier",
+      title: "Business Strategy, Market Integration & Scientific Methodology",
+      subtitle:
+        "Comprehensive academic monograph evaluating the merger of Sella Farmaceutici (1920) and Salix (1998) into the Nexofarm CDMO venture. Developed for CUOA Business School.",
+      backHome: "Back to Overview",
+      academicContextTitle: "Academic Origin & Executive Summary",
+      academicContextBadge: "CUOA Business School · Summer Exchange Program",
+      academicContextText:
+        "This project represents the final capstone thesis of the Business Strategy and Marketing Management course at CUOA Business School (Altavilla Vicentina, Italy). The investigation evaluates the strategic integration of two historic and non-competing industrial powerhouses within the province of Vicenza: Laboratorio Chimico Farmaceutico A. Sella S.r.l. and Salix S.r.l.",
+      conceptualDisclaimer:
+        "Disclaimer: The Nexofarm brand, commercial positioning, and portal structure presented herein constitute an academic conceptual proposal developed for pedagogical simulation and do not represent a commercial reality or operative trading entity.",
+      objectivesTitle: "Core Strategic Objectives of the Case Study",
+      objectives: [
+        {
+          num: "01",
+          title: "Capturing the 'In & Out' Market Trend",
+          desc: "Merging topical dermatological medicine with oral nutricosmetics to address the high-growth European beauty-from-within segment (+11.8% CAGR).",
+        },
+        {
+          num: "02",
+          title: "Operational & Regulatory Synergies",
+          desc: "Uniting Sella's 100+ years of AIFA/GMP clinical certification with Salix's high-speed 10,000 m² automated facility to eliminate production bottlenecks.",
+        },
+        {
+          num: "03",
+          title: "Maximizing 'Made in Italy' Life Sciences Equity",
+          desc: "Positioning northern Italy (Vicenza) as a world-class contract development destination capable of competing with global conglomerates.",
+        },
+      ],
+      synergyMatrixTitle: "Comparative Synergy Matrix",
+      synergyMatrixHeaders: {
+        dimension: "Strategic Dimension",
+        sella: "Sella Farmaceutici (1920)",
+        salix: "Salix S.r.l. (1998)",
+        nexofarm: "Nexofarm Combined Force",
+      },
+      synergyRows: [
+        {
+          dimension: "Core Heritage",
+          sella: "100+ years galenic pharmacy & OTC medicines",
+          salix: "25+ years automated dietary supplements",
+          nexofarm: "Century-old clinical trust + modern industrial agility",
+        },
+        {
+          dimension: "Production Infrastructure",
+          sella: "Pharmaceutical GMP Cleanrooms (Schio)",
+          salix: "10,000+ m² automated plant (Monte di Malo)",
+          nexofarm: "Vertically integrated: pilot lab to mass automated lines",
+        },
+        {
+          dimension: "Formulation Portfolio",
+          sella: "Galenics, ointments, dermatological solutions",
+          salix: "Stick packs, oral liquids, tablets, softgels",
+          nexofarm: "Full-spectrum 'In & Out' topical + systemic treatments",
+        },
+        {
+          dimension: "Certifications",
+          sella: "AIFA authorized, Ph. Eur., GMP",
+          salix: "ISO 9001, ISO 22716, ISO 13485, EFSA",
+          nexofarm: "Unified pan-European regulatory passport",
+        },
+      ],
+      marketAnalysisTitle: "European & Italian Market Dynamics (Data 2025–2026)",
+      marketPoints: [
+        {
+          title: "Italian Cosmetics Leadership",
+          stat: "€18.0 Billion Turnover",
+          desc: "Italy produces over 60% of all high-end cosmetics worldwide, with €8.6B in exports and a €49B total economic ecosystem.",
+        },
+        {
+          title: "European Nutraceutical #1",
+          stat: "€5.4 Billion TAM",
+          desc: "Italy represents 26% of all dietary supplement sales in Europe, with 78% distributed through high-trust pharmacy channels.",
+        },
+        {
+          title: "Nutricosmetics Boom",
+          stat: "+11.8% Annual Growth",
+          desc: "The fastest growing cross-segment in Europe, demanding dual topical/oral protocols backed by clinical stability data.",
+        },
+      ],
+      regulatoryTitle: "Regulatory Architecture & Dossier Delivery",
+      regulatoryText:
+        "Nexofarm is structured to provide turnkey regulatory dossiers for B2B clients, including Cosmetic Product Safety Reports (CPSR) under EU Regulation 1223/2009, Common Technical Documents (CTD) for OTC pharmaceutical products under AIFA, and Medical Device conformity declarations under EU MDR 2017/745.",
+      conclusionsTitle: "Academic Conclusions & Strategic Recommendations",
+      conclusionsText:
+        "The case study demonstrates that the consolidation of Sella and Salix creates a unique European CDMO powerhouse that eliminates the typical trade-off between pharmaceutical rigor and cosmetic sensory elegance. The shared territorial footprint within the province of Vicenza provides supply chain resilience and genuine 'Made in Italy' brand prestige.",
+    },
     cta: {
       badge: "Partnership & Innovation",
       title: "Let's Shape the Next Scientific Breakthrough Together.",
@@ -517,9 +720,10 @@ export const translations: Record<"en" | "it", TranslationType> = {
       cookiePolicy: "Cookie Policy",
       termsOfUse: "Terms & Conditions",
       cookieSettings: "Cookie Preferences",
-      rights: "© 2026 Nexofarm S.r.l. - All rights reserved. Made in Italy.",
+      rights: "© 2026 Nexofarm · Conceptual Academic Venture · All rights reserved.",
       cuoaBadge: "Final Project developed for CUOA Business School International Summer Program.",
-      cuoaNote: "Project developed in collaboration with CUOA Business School (Altavilla Vicentina, Italy).",
+      cuoaNote:
+        "This project was developed as part of the final capstone work of the Business Strategy and Marketing Management course at CUOA Business School (Altavilla Vicentina, Italy). The website and the Nexofarm brand are a conceptual idea derived from an academic case study and do not represent a commercial reality.",
     },
     cookieBanner: {
       title: "Cookie Consent & Privacy Preferences",
@@ -550,14 +754,11 @@ export const translations: Record<"en" | "it", TranslationType> = {
   },
   it: {
     nav: {
-      home: "Home",
-      heritage: "Eredità & Sinergia",
+      home: "Panoramica",
       expertise: "Competenze CDMO",
-      technology: "Tecnologia",
-      process: "Metodo Produttivo",
-      certifications: "Standard di Qualità",
-      about: "Chi Siamo",
-      contact: "Contatti",
+      heritage: "Eredità (1920–1998)",
+      dossier: "Studio di Caso & Dossier",
+      contact: "Contatti Lab",
       ctaContact: "Richiedi Consulenza",
     },
     hero: {
@@ -608,6 +809,70 @@ export const translations: Record<"en" | "it", TranslationType> = {
       synergyDesc:
         "Integrando il rigore galenico secolare di Sella con la potenza produttiva nutraceutica di Salix, Nexofarm realizza l'approccio integrato: dermocosmesi topica di precisione combinata a nutricosmesi orale (bellezza dall'interno), tutto sotto la medesima regia scientifica.",
       cuoaBadge: "Ideazione Accademica: CUOA Business School · Altavilla Vicentina",
+    },
+    explorer: {
+      eyebrow: "Esploratore Formulativo Interattivo",
+      title: "Le Quattro Discipline Specialistiche all'Opera",
+      subtitle:
+        "Seleziona un dominio scientifico per ispezionare parametri formulativi, architetture di rilascio e standard di qualità clinica.",
+      tabs: [
+        {
+          id: "biotech",
+          label: "Biotecnologia & Principi Attivi",
+          category: "Bio-Fermentazione Cellulare",
+          tagline: "Attivi molecolari ad alta affinità ingegnerizzati da botaniche sostenibili.",
+          activeMolecule: "Salicina & Polifenoli Botanici (Estratti da Salix Alba - Salice Bianco)",
+          deliverySystem: "Estrazione con CO2 Supercritica & Bilayer Fosfolipidico Liposomiale",
+          facilityOrigin: "Bio-Laboratorio R&D · Schio (VI)",
+          batchSpecs: "Concentrato Liquido & Micro-polvere · Titolazione Attiva 99,4%",
+          clinicalPurity: "Purezza HPLC 99,4%",
+          stabilityProfile: "36 Mesi in Condizioni ICH Zona II",
+          description:
+            "La biofermentazione proprietaria isola salicina e polifenoli antiossidanti ad altissima biodisponibilità, abbattendo i mediatori infiammatori e stimolando la produzione di collagene endogeno senza additivi chimici aggressivi.",
+        },
+        {
+          id: "dermo",
+          label: "Dermocosmesi Clinica",
+          category: "Formulazioni Topiche di Precisione",
+          tagline: "Il rigore farmaceutico fuso con le texture sensoriali del lusso cosmetico italiano.",
+          activeMolecule: "Complesso Biomimetico Acetil Esapeptide-8 + Ceramide NP",
+          deliverySystem: "Emulsione Lamellare Airless a Micro-penetrazione Dermo-compatibile",
+          facilityOrigin: "Reparto Formulazione Dermatologica · Schio (VI)",
+          batchSpecs: "Dispenser Airless & Flaconi Sterili · Lotti da 50ml a 1.000 Litri",
+          clinicalPurity: "Clinicamente Testato / Ipoallergenico",
+          stabilityProfile: "Challenge Test Superato · Zero Parabeni o Siliconi",
+          description:
+            "Unisce la riparazione della barriera cutanea farmaceutica all'assorbimento cosmetico d'eccellenza. Prodotto in camere bianche di Classe C per garantire tollerabilità anche su pelli reattive.",
+        },
+        {
+          id: "nutra",
+          label: "Nutricosmetica Avanzata",
+          category: "Bellezza Sistemica dall'Interno (In & Out)",
+          tagline: "Elasticità cutanea e difesa antiossidante che agiscono dall'interno verso l'esterno.",
+          activeMolecule: "Peptidi Bioattivi di Collagene Marino Tipo I/III + Coenzima Q10",
+          deliverySystem: "Stick Pack Liquidi Monodose & Compresse Multistrato Effervescenti",
+          facilityOrigin: "Polo CDMO Automatizzato da 10.000+ m² · Monte di Malo (VI)",
+          batchSpecs: "Linee automatizzate ad alta velocità (Stick Pack 15ml) · 2M unità/mese",
+          clinicalPurity: "Nutrienti 100% Convalida EFSA",
+          stabilityProfile: "Microincapsulazione gastro-resistente brevettata",
+          description:
+            "Sviluppato per operare in sinergia clinica con i dermocosmetici topici. La microincapsulazione protegge i principi attivi dall'acidità gastrica, massimizzando l'assorbimento intestinale e la veicolazione cutanea.",
+        },
+        {
+          id: "galenics",
+          label: "Galenica & CDMO Farmaceutico",
+          category: "Produzione Industriale Autorizzata AIFA",
+          tagline: "Oltre un secolo di etica farmaceutica applicata alla manifattura industriale conto terzi.",
+          activeMolecule: "Preparazioni Galeniche di Farmacopea & Dispositivi Medici Classe IIa/IIb",
+          deliverySystem: "Blistering in Cleanroom, Flaconcini & Linee Automatizzate di Riempimento",
+          facilityOrigin: "Stabilimenti Farmaceutici GMP · Schio & Monte di Malo (VI)",
+          batchSpecs: "Rilascio completo del lotto con Certificato di Analisi (CoA)",
+          clinicalPurity: "Standard di Farmacopea Ufficiale (Ph. Eur.) ed AIFA",
+          stabilityProfile: "Stabilità Accelerata ICH Q1A Convalidata (40°C/75% UR)",
+          description:
+            "Servizio CDMO farmaceutico completo: redazione di dossier tecnici (CTD), notifiche regolatorie europee e rilascio lotti da parte della Persona Qualificata (QP).",
+        },
+      ],
     },
     video: {
       eyebrow: "Scopri Nexofarm",
@@ -809,6 +1074,94 @@ export const translations: Record<"en" | "it", TranslationType> = {
         },
       ],
     },
+    dossierPage: {
+      badge: "Studio di Caso Accademico & Dossier Scientifico",
+      title: "Strategia Aziendale, Integrazione Industriale & Metodologia Scientifica",
+      subtitle:
+        "Monografia accademica completa per la valutazione della fusione tra Sella Farmaceutici (1920) e Salix (1998) nella joint venture CDMO Nexofarm. Elaborato per CUOA Business School.",
+      backHome: "Torna alla Panoramica",
+      academicContextTitle: "Origine Accademica & Sintesi Esecutiva",
+      academicContextBadge: "CUOA Business School · Programma Internazionale",
+      academicContextText:
+        "Questo progetto costituisce il lavoro finale di tesi del corso di Business Strategy and Marketing Management presso la CUOA Business School (Altavilla Vicentina, Italia). L'indagine valuta l'integrazione strategica di due solide realtà industriali non concorrenti della provincia di Vicenza: Laboratorio Chimico Farmaceutico A. Sella S.r.l. e Salix S.r.l.",
+      conceptualDisclaimer:
+        "Nota di Trasparenza Accademica: Il marchio Nexofarm, il posizionamento strategico e la piattaforma presentati costituiscono una proposta concettuale sviluppata nell'ambito di una simulazione pedagogica e non rappresentano una realtà commerciale operante.",
+      objectivesTitle: "Obiettivi Strategici Fondamentali dello Studio",
+      objectives: [
+        {
+          num: "01",
+          title: "Intercettare il Trend 'In & Out'",
+          desc: "Fusione della medicina dermatologica topica con la nutricosmetica orale per presidiare il segmento europeo 'beauty-from-within' in forte espansione (+11,8% annuo).",
+        },
+        {
+          num: "02",
+          title: "Sinergie Operative e Regolatorie",
+          desc: "Unione di oltre 100 anni di certificazioni cliniche AIFA/GMP di Sella con l'impianto automatizzato da 10.000 m² di Salix per azzerare i colli di bottiglia produttivi.",
+        },
+        {
+          num: "03",
+          title: "Valorizzazione del 'Made in Italy' nelle Life Sciences",
+          desc: "Posizionare il distretto di Vicenza come hub europeo di sviluppo conto terzi in grado di competere con le multinazionali farmaceutiche e cosmetiche globali.",
+        },
+      ],
+      synergyMatrixTitle: "Matrice Comparativa delle Sinergie",
+      synergyMatrixHeaders: {
+        dimension: "Dimensione Strategica",
+        sella: "Sella Farmaceutici (1920)",
+        salix: "Salix S.r.l. (1998)",
+        nexofarm: "Forza Congiunta Nexofarm",
+      },
+      synergyRows: [
+        {
+          dimension: "Eredità Storica",
+          sella: "100+ anni di farmacia galenica e farmaci OTC",
+          salix: "25+ anni di integratori alimentari automatizzati",
+          nexofarm: "Fiducia clinica secolare + agilità industriale moderna",
+        },
+        {
+          dimension: "Infrastruttura Produttiva",
+          sella: "Camere Bianche GMP Farmaceutiche (Schio)",
+          salix: "Stabilimento da 10.000+ m² (Monte di Malo)",
+          nexofarm: "Filiera integrata: dal laboratorio pilota alle grandi tirature",
+        },
+        {
+          dimension: "Portafoglio Formulativo",
+          sella: "Galenici, unguenti, soluzioni dermatologiche",
+          salix: "Stick pack, liquidi orali, compresse, softgel",
+          nexofarm: "Gamma completa 'In & Out' topica + sistemica",
+        },
+        {
+          dimension: "Certificazioni",
+          sella: "Autorizzazione AIFA, Ph. Eur., GMP",
+          salix: "ISO 9001, ISO 22716, ISO 13485, EFSA",
+          nexofarm: "Passaporto regolatorio unificato paneuropeo",
+        },
+      ],
+      marketAnalysisTitle: "Dinamiche di Mercato Europee ed Italiane (Dati 2025–2026)",
+      marketPoints: [
+        {
+          title: "Primato Cosmetico Italiano",
+          stat: "18,0 Miliardi € Fatturato",
+          desc: "L'Italia fabbrica oltre il 60% della cosmetica di alta gamma mondiale, con 8,6 miliardi di export e una filiera da 49 miliardi di euro.",
+        },
+        {
+          title: "Leader Europeo Nutraceutica",
+          stat: "5,4 Miliardi € Valore",
+          desc: "L'Italia rappresenta il 26% dei consumi di integratori in Europa, veicolati al 78% attraverso il canale fiduciario della farmacia.",
+        },
+        {
+          title: "Boom della Nutricosmetica",
+          stat: "+11,8% Crescita Annua",
+          desc: "Il segmento a più rapida crescita in Europa, richiedente protocolli combinati topici e orali supportati da solidi dati di stabilità.",
+        },
+      ],
+      regulatoryTitle: "Architettura Regolatoria e Consegna Dossier",
+      regulatoryText:
+        "Nexofarm è strutturata per rilasciare dossier regolatori completi per clienti B2B, inclusi i Cosmetic Product Safety Report (CPSR) conformi al Regolamento CE 1223/2009, Common Technical Documents (CTD) per farmaci OTC con AIFA e dichiarazioni di conformità per Dispositivi Medici secondo il Regolamento UE MDR 2017/745.",
+      conclusionsTitle: "Conclusioni Accademiche e Raccomandazioni Strategiche",
+      conclusionsText:
+        "Lo studio di caso dimostra come il consolidamento tra Sella e Salix crei un polo CDMO europeo senza precedenti, capace di superare il classico compromesso tra rigore farmaceutico e piacevolezza sensoriale cosmetica. La prossimità territoriale nel vicentino garantisce resilienza logistica e l'inestimabile valore del marchio 'Made in Italy'.",
+    },
     cta: {
       badge: "Partnership & Sviluppo",
       title: "Costruiamo Insieme la Prossima Innovazione Scientifica.",
@@ -874,9 +1227,10 @@ export const translations: Record<"en" | "it", TranslationType> = {
       cookiePolicy: "Informativa Cookie",
       termsOfUse: "Termini e Condizioni d'Uso",
       cookieSettings: "Preferenze Cookie",
-      rights: "© 2026 Nexofarm S.r.l. - Tutti i diritti riservati. Made in Italy.",
+      rights: "© 2026 Nexofarm · Idea Concettuale Accademica · Tutti i diritti riservati.",
       cuoaBadge: "Progetto finale sviluppato per il Summer Program di CUOA Business School.",
-      cuoaNote: "Progetto concepito in collaborazione con CUOA Business School (Altavilla Vicentina, VI).",
+      cuoaNote:
+        "Questo progetto è stato sviluppato nell'ambito del lavoro finale di conclusione del corso di Business Strategy and Marketing Management presso la CUOA Business School (Altavilla Vicentina, Italia). Il sito web e la Nexofarm costituiscono un'idea concettuale derivata da uno studio di caso aziendale e non rappresentano una realtà commerciale operante.",
     },
     cookieBanner: {
       title: "Consenso Cookie e Gestione della Privacy",
