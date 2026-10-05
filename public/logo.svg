@@ -1,16 +1,33 @@
 <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="50" cy="50" r="46" stroke="#0D5B56" stroke-width="2.5" />
-  <circle cx="50" cy="50" r="42" stroke="#C5A059" stroke-width="1" stroke-dasharray="3 3" opacity="0.8" />
-  <circle cx="50" cy="50" r="38" stroke="#0D5B56" stroke-width="0.8" opacity="0.3" />
+  <!-- Outer Boundary Circle -->
+  <circle cx="50" cy="50" r="46" stroke="#0D5B56" stroke-width="3.2" />
 
-  <!-- N Monogram with Salix Botanical Helix & Sella Galenic Cross -->
-  <path d="M34 28V72" stroke="#0D5B56" stroke-width="3.5" stroke-linecap="round" />
-  <path d="M30 28H38M30 72H38" stroke="#0D5B56" stroke-width="1.8" stroke-linecap="round" />
-  <path d="M34 30L66 70" stroke="#C5A059" stroke-width="3.2" stroke-linecap="round" />
-  <path d="M66 28V72" stroke="#0D5B56" stroke-width="3.5" stroke-linecap="round" />
-  <path d="M62 28H70M62 72H70" stroke="#0D5B56" stroke-width="1.8" stroke-linecap="round" />
+  <!-- Left Hemisphere Cosmetic Cream Swirl Droplet -->
+  <path
+    d="M 50 10 C 30 10 12 28 12 50 C 12 72 30 90 50 90 C 42 78 35 65 35 50 C 35 34 42 22 50 10 Z"
+    fill="#F7F5F0"
+    stroke="#0D5B56"
+    stroke-width="0.8"
+    stroke-opacity="0.3"
+  />
 
-  <circle cx="50" cy="50" r="3.5" fill="#C5A059" />
-  <polygon points="50,13 51.5,16.5 55,17 52.5,19.5 53,23 50,21 47,23 47.5,19.5 45,17 48.5,16.5" fill="#C5A059" />
-  <polygon points="50,87 51.5,83.5 55,83 52.5,80.5 53,77 50,79 47,77 47.5,80.5 45,83 48.5,83.5" fill="#C5A059" />
+  <!-- Center Vertical Dividing Axis -->
+  <line x1="50" y1="4" x2="50" y2="96" stroke="#0D5B56" stroke-width="2.8" stroke-linecap="round" />
+
+  <!-- Right Hemisphere Golden Ratio Rectangle Grid -->
+  <line x1="50" y1="50" x2="96" y2="50" stroke="#0D5B56" stroke-width="2.2" stroke-linecap="round" />
+  <line x1="68" y1="50" x2="68" y2="92" stroke="#0D5B56" stroke-width="2" stroke-linecap="round" />
+  <line x1="50" y1="76" x2="68" y2="76" stroke="#0D5B56" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="57" y1="50" x2="57" y2="76" stroke="#0D5B56" stroke-width="1.5" stroke-linecap="round" />
+  <line x1="57" y1="60" x2="68" y2="60" stroke="#0D5B56" stroke-width="1.2" stroke-linecap="round" />
+
+  <!-- Golden Spiral (Fibonacci Curve) in Antique Gold -->
+  <path
+    d="M 50 4 A 46 46 0 0 1 96 50 A 42 42 0 0 1 50 92 A 26 26 0 0 1 50 64 A 16 16 0 0 1 66 64 A 10 10 0 0 1 60 74"
+    fill="none"
+    stroke="#C5A059"
+    stroke-width="2.6"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
 </svg>
