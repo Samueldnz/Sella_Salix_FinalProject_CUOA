@@ -248,10 +248,10 @@ export const translations: Record<"en" | "it", TranslationType> = {
   en: {
     nav: {
       home: "Overview",
-      expertise: "CDMO & Expertise",
-      heritage: "Heritage (1920–1998)",
-      dossier: "Case Study & Dossier",
-      contact: "Contact Labs",
+      expertise: "Expertise",
+      heritage: "Heritage",
+      dossier: "Dossier",
+      contact: "Contact",
       ctaContact: "Request Consultation",
     },
     hero: {
@@ -755,10 +755,10 @@ export const translations: Record<"en" | "it", TranslationType> = {
   it: {
     nav: {
       home: "Panoramica",
-      expertise: "Competenze CDMO",
-      heritage: "Eredità (1920–1998)",
-      dossier: "Studio di Caso & Dossier",
-      contact: "Contatti Lab",
+      expertise: "Expertise",
+      heritage: "Heritage",
+      dossier: "Dossier",
+      contact: "Contatti",
       ctaContact: "Richiedi Consulenza",
     },
     hero: {

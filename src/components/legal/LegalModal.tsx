@@ -50,7 +50,7 @@ export function LegalModal({ isOpen, activeDoc, onClose, onSelectDoc }: LegalMod
             <div>
               {/* Brand Header */}
               <div className="flex items-center justify-between pb-6 border-b border-border/80">
-                <Logo variant="horizontal" size="sm" />
+                <Logo variant="horizontal" size="sm" withSubtitle={false} />
                 <button
                   onClick={onClose}
                   className="rounded-full p-2 text-text-secondary hover:bg-surface hover:text-accent transition-colors md:hidden"

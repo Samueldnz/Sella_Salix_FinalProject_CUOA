@@ -13,7 +13,6 @@ interface EmblemProps {
   withCream?: boolean;
   svgClass?: string;
   strokeColor: string;
-  spiralColor: string;
   creamLight: string;
   creamShadow: string;
   isDark: boolean;
@@ -21,12 +20,12 @@ interface EmblemProps {
 }
 
 // Pure Fibonacci Golden Ratio Circular Emblem declared outside render
+// Features authentic green logarithmic spiral starting from the center
 const FibonacciEmblem: React.FC<EmblemProps> = ({
   dimension = 100,
   withCream = true,
   svgClass = "",
   strokeColor,
-  spiralColor,
   creamLight,
   creamShadow,
   isDark,
@@ -112,23 +111,23 @@ const FibonacciEmblem: React.FC<EmblemProps> = ({
       strokeLinecap="round"
     />
 
-    {/* 3. Horizontal Golden Cut at y=76 */}
+    {/* 3. Horizontal Golden Cut at y=74 */}
     <line
       x1="50"
-      y1="76"
+      y1="74"
       x2="68"
-      y2="76"
+      y2="74"
       stroke={strokeColor}
       strokeWidth="1.8"
       strokeLinecap="round"
     />
 
-    {/* 4. Vertical Golden Cut at x=57 */}
+    {/* 4. Vertical Golden Cut at x=58 */}
     <line
-      x1="57"
+      x1="58"
       y1="50"
-      x2="57"
-      y2="76"
+      x2="58"
+      y2="74"
       stroke={strokeColor}
       strokeWidth="1.5"
       strokeLinecap="round"
@@ -136,7 +135,7 @@ const FibonacciEmblem: React.FC<EmblemProps> = ({
 
     {/* 5. Inner Micro-Cut at y=60 */}
     <line
-      x1="57"
+      x1="58"
       y1="60"
       x2="68"
       y2="60"
@@ -145,12 +144,12 @@ const FibonacciEmblem: React.FC<EmblemProps> = ({
       strokeLinecap="round"
     />
 
-    {/* Golden Ratio Fibonacci Logarithmic Spiral Curve */}
+    {/* Authentic Green Fibonacci Logarithmic Spiral - Starts from the Center (64, 62) and winds outward */}
     <path
-      d="M 50 4 A 46 46 0 0 1 96 50 A 42 42 0 0 1 50 92 A 26 26 0 0 1 50 64 A 16 16 0 0 1 66 64 A 10 10 0 0 1 60 74"
+      d="M 64 62 A 4 4 0 0 1 68 66 A 8 8 0 0 1 60 74 A 14 14 0 0 1 50 60 A 24 24 0 0 1 74 36 A 38 38 0 0 1 96 50 A 46 46 0 0 1 50 4"
       fill="none"
-      stroke={spiralColor}
-      strokeWidth="2.6"
+      stroke={strokeColor}
+      strokeWidth="2.8"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
@@ -166,16 +165,16 @@ export const Logo: React.FC<LogoProps> = ({
 }) => {
   const isDark = theme === "dark";
   const strokeColor = isDark ? "#ffffff" : "#0D5B56";
-  const spiralColor = isDark ? "#E5C378" : "#C5A059";
   const creamLight = isDark ? "rgba(255, 255, 255, 0.22)" : "#FFFFFF";
   const creamShadow = isDark ? "rgba(255, 255, 255, 0.08)" : "#EAE6DC";
   const textMuted = isDark ? "rgba(255,255,255,0.7)" : "#6B6760";
+  const accentColor = isDark ? "#E5C378" : "#C5A059";
 
   const sizeClasses = {
-    sm: "h-8",
-    md: "h-11",
-    lg: "h-14",
-    xl: "h-20",
+    sm: "h-7",
+    md: "h-10",
+    lg: "h-13",
+    xl: "h-18",
   }[size];
 
   // Standalone Fibonacci Symbol Variant
@@ -186,7 +185,6 @@ export const Logo: React.FC<LogoProps> = ({
           withCream={true}
           svgClass={`${sizeClasses} w-auto aspect-square`}
           strokeColor={strokeColor}
-          spiralColor={spiralColor}
           creamLight={creamLight}
           creamShadow={creamShadow}
           isDark={isDark}
@@ -198,14 +196,13 @@ export const Logo: React.FC<LogoProps> = ({
 
   // Full / Horizontal Brand Identity (with NEX[O]FARM typographic integration)
   return (
-    <div className={`inline-flex items-center gap-3.5 ${className}`}>
+    <div className={`inline-flex items-center gap-3 ${className}`}>
       {/* Emblem Crest */}
       <div className="shrink-0 flex items-center justify-center">
         <FibonacciEmblem
           withCream={true}
           svgClass={`${sizeClasses} w-auto aspect-square`}
           strokeColor={strokeColor}
-          spiralColor={spiralColor}
           creamLight={creamLight}
           creamShadow={creamShadow}
           isDark={isDark}
@@ -215,13 +212,13 @@ export const Logo: React.FC<LogoProps> = ({
 
       {/* Wordmark with integrated Fibonacci 'O' */}
       <div className="flex flex-col justify-center select-none">
-        <div className="flex items-center tracking-[0.14em] font-sans font-semibold text-lg sm:text-xl lg:text-2xl leading-none">
+        <div className="flex items-center tracking-[0.14em] font-sans font-semibold text-lg sm:text-xl lg:text-[1.35rem] leading-none">
           <span style={{ color: strokeColor }} className="font-semibold tracking-[0.16em]">
             NEX
           </span>
 
-          {/* Inline miniature Fibonacci circle replacing the letter O */}
-          <span className="inline-flex items-center justify-center px-[1px]">
+          {/* Inline miniature Fibonacci circle replacing the letter O with clearly visible green spiral */}
+          <span className="inline-flex items-center justify-center px-[2px]">
             <svg
               viewBox="0 0 100 100"
               className="h-[0.88em] w-[0.88em] aspect-square"
@@ -262,16 +259,17 @@ export const Logo: React.FC<LogoProps> = ({
               />
               <line
                 x1="50"
-                y1="76"
+                y1="74"
                 x2="68"
-                y2="76"
+                y2="74"
                 stroke={strokeColor}
                 strokeWidth="4"
               />
+              {/* Green spiral starting in the center inside the letter O */}
               <path
-                d="M 50 4 A 46 46 0 0 1 96 50 A 42 42 0 0 1 50 92 A 26 26 0 0 1 50 64 A 16 16 0 0 1 66 64"
+                d="M 64 62 A 4 4 0 0 1 68 66 A 8 8 0 0 1 60 74 A 14 14 0 0 1 50 60 A 24 24 0 0 1 74 36 A 38 38 0 0 1 96 50 A 46 46 0 0 1 50 4"
                 fill="none"
-                stroke={spiralColor}
+                stroke={strokeColor}
                 strokeWidth="5.5"
                 strokeLinecap="round"
               />
@@ -294,7 +292,7 @@ export const Logo: React.FC<LogoProps> = ({
             <span className="inline-block h-1 w-1 rounded-full bg-accent/70" />
             <span
               className="text-[9px] sm:text-[10px] uppercase font-semibold tracking-[0.18em]"
-              style={{ color: spiralColor }}
+              style={{ color: accentColor }}
             >
               Sella & Salix
             </span>

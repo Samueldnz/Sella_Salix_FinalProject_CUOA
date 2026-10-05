@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Menu, X, ArrowRight, FileText } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 import { Logo } from "../brand/Logo";
 
@@ -29,27 +29,27 @@ export function Header({
     <header
       className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${
         scrolled
-          ? "border-b border-border/80 bg-surface/92 shadow-sm backdrop-blur-md"
-          : "bg-surface/60 backdrop-blur-xs"
+          ? "border-b border-border/80 bg-surface/95 shadow-xs backdrop-blur-md"
+          : "bg-surface/75 backdrop-blur-xs"
       }`}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
-        {/* Brand Logo & Synergy Subtitle */}
+        {/* Brand Logo & Wordmark (Without Subtitle in Nav as requested) */}
         <button
           onClick={onNavigateHome}
           className="group flex items-center text-left focus:outline-none cursor-pointer"
           aria-label="Nexofarm - Back to Overview"
         >
-          <Logo variant="horizontal" size="md" />
+          <Logo variant="horizontal" size="md" withSubtitle={false} />
         </button>
 
-        {/* Streamlined Desktop Navigation Links (Only 4 core destinations) */}
-        <nav className="hidden items-center gap-8 lg:flex">
+        {/* Streamlined Desktop Navigation Links (Clean text without icons for maximum breathing room) */}
+        <nav className="hidden items-center gap-9 lg:flex">
           <button
             onClick={onNavigateHome}
             className={`text-xs font-semibold uppercase tracking-widest transition-colors duration-200 cursor-pointer ${
               currentPage === "home"
-                ? "text-primary border-b-2 border-primary pb-0.5"
+                ? "text-primary border-b-2 border-primary pb-1"
                 : "text-text-secondary hover:text-accent"
             }`}
           >
@@ -78,22 +78,21 @@ export function Header({
 
           <button
             onClick={onNavigateDossier}
-            className={`inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest transition-colors duration-200 cursor-pointer ${
+            className={`text-xs font-semibold uppercase tracking-widest transition-colors duration-200 cursor-pointer ${
               currentPage === "dossier"
-                ? "text-primary border-b-2 border-primary pb-0.5"
+                ? "text-primary border-b-2 border-primary pb-1"
                 : "text-text-secondary hover:text-accent"
             }`}
           >
-            <FileText size={14} className="text-gold-hover" />
-            <span>{t.nav.dossier}</span>
+            {t.nav.dossier}
           </button>
         </nav>
 
-        {/* Desktop Actions: Language Toggle & Contact Consultation */}
+        {/* Desktop Right Controls: Compact Language Switcher + Prominent CTA */}
         <div className="hidden items-center gap-4 lg:flex">
-          {/* Bilingual Switcher */}
+          {/* Sleek Compact Bilingual Switcher */}
           <div
-            className="inline-flex items-center rounded-full border border-border bg-surface-secondary/80 p-1 text-xs font-semibold shadow-2xs"
+            className="inline-flex items-center rounded-full border border-border/90 bg-surface-alt/80 p-0.5 text-[11px] font-bold shadow-2xs"
             role="group"
             aria-label="Language selection"
           >
@@ -101,20 +100,19 @@ export function Header({
               onClick={() => setLanguage("en")}
               className={`rounded-full px-2.5 py-1 transition-all duration-200 cursor-pointer ${
                 language === "en"
-                  ? "bg-primary text-white shadow-xs font-bold"
-                  : "text-text-secondary hover:text-primary"
+                  ? "bg-primary text-white shadow-2xs font-bold"
+                  : "text-text-muted hover:text-text"
               }`}
               aria-label="Switch to English"
             >
               EN
             </button>
-            <span className="text-border-strong px-0.5">•</span>
             <button
               onClick={() => setLanguage("it")}
               className={`rounded-full px-2.5 py-1 transition-all duration-200 cursor-pointer ${
                 language === "it"
-                  ? "bg-primary text-white shadow-xs font-bold"
-                  : "text-text-secondary hover:text-primary"
+                  ? "bg-primary text-white shadow-2xs font-bold"
+                  : "text-text-muted hover:text-text"
               }`}
               aria-label="Passa all'italiano"
             >
@@ -122,34 +120,33 @@ export function Header({
             </button>
           </div>
 
-          {/* Contact Consultation CTA */}
+          {/* Contact Consultation CTA Button */}
           <a
             href="#contact"
             onClick={() => {
               if (currentPage !== "home") onNavigateHome();
             }}
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:bg-primary-hover hover:shadow-md cursor-pointer"
+            className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:bg-primary-hover hover:shadow-md hover:-translate-y-0.5 cursor-pointer"
           >
-            <span>{t.nav.contact}</span>
-            <ArrowRight size={14} />
+            {t.nav.ctaContact}
           </a>
         </div>
 
-        {/* Mobile Controls (Language Switcher + Hamburger) */}
+        {/* Mobile Controls (Compact Language Switcher + Hamburger) */}
         <div className="flex items-center gap-3 lg:hidden">
-          <div className="inline-flex items-center rounded-full border border-border bg-surface-secondary p-0.5 text-xs font-semibold">
+          <div className="inline-flex items-center rounded-full border border-border bg-surface-alt p-0.5 text-[11px] font-bold">
             <button
               onClick={() => setLanguage("en")}
-              className={`rounded-full px-2 py-0.5 ${
-                language === "en" ? "bg-primary text-white" : "text-text-secondary"
+              className={`rounded-full px-2 py-0.5 transition-all ${
+                language === "en" ? "bg-primary text-white font-bold" : "text-text-muted"
               }`}
             >
               EN
             </button>
             <button
               onClick={() => setLanguage("it")}
-              className={`rounded-full px-2 py-0.5 ${
-                language === "it" ? "bg-primary text-white" : "text-text-secondary"
+              className={`rounded-full px-2 py-0.5 transition-all ${
+                language === "it" ? "bg-primary text-white font-bold" : "text-text-muted"
               }`}
             >
               IT
@@ -158,7 +155,7 @@ export function Header({
 
           <button
             onClick={() => setOpen(!open)}
-            className="rounded-lg p-2 text-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+            className="rounded-lg p-2 text-primary focus:outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer"
             aria-label="Toggle Navigation Menu"
           >
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -175,7 +172,7 @@ export function Header({
                 onNavigateHome();
                 setOpen(false);
               }}
-              className="py-1.5 text-left text-sm font-medium text-text-secondary hover:text-primary"
+              className="py-1.5 text-left text-sm font-semibold text-text-secondary hover:text-primary cursor-pointer"
             >
               {t.nav.home}
             </button>
@@ -186,7 +183,7 @@ export function Header({
                 if (currentPage !== "home") onNavigateHome();
                 setOpen(false);
               }}
-              className="py-1.5 text-sm font-medium text-text-secondary hover:text-primary"
+              className="py-1.5 text-sm font-semibold text-text-secondary hover:text-primary cursor-pointer"
             >
               {t.nav.expertise}
             </a>
@@ -197,7 +194,7 @@ export function Header({
                 if (currentPage !== "home") onNavigateHome();
                 setOpen(false);
               }}
-              className="py-1.5 text-sm font-medium text-text-secondary hover:text-primary"
+              className="py-1.5 text-sm font-semibold text-text-secondary hover:text-primary cursor-pointer"
             >
               {t.nav.heritage}
             </a>
@@ -207,10 +204,9 @@ export function Header({
                 onNavigateDossier();
                 setOpen(false);
               }}
-              className="flex items-center gap-2 py-1.5 text-left text-sm font-semibold text-primary"
+              className="py-1.5 text-left text-sm font-semibold text-primary cursor-pointer"
             >
-              <FileText size={16} className="text-gold-hover" />
-              <span>{t.nav.dossier}</span>
+              {t.nav.dossier}
             </button>
 
             <div className="pt-4 border-t border-border">
@@ -220,10 +216,9 @@ export function Header({
                   if (currentPage !== "home") onNavigateHome();
                   setOpen(false);
                 }}
-                className="flex items-center justify-center gap-2 rounded-full bg-primary py-3 text-xs font-semibold uppercase tracking-wider text-white hover:bg-primary-hover shadow-sm"
+                className="flex items-center justify-center rounded-full bg-primary py-3 text-xs font-semibold uppercase tracking-wider text-white hover:bg-primary-hover shadow-sm"
               >
-                <span>{t.nav.contact}</span>
-                <ArrowRight size={14} />
+                {t.nav.ctaContact}
               </a>
             </div>
           </nav>

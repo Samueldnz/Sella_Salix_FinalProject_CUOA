@@ -17,16 +17,16 @@
   <!-- Right Hemisphere Golden Ratio Rectangle Grid -->
   <line x1="50" y1="50" x2="96" y2="50" stroke="#0D5B56" stroke-width="2.2" stroke-linecap="round" />
   <line x1="68" y1="50" x2="68" y2="92" stroke="#0D5B56" stroke-width="2" stroke-linecap="round" />
-  <line x1="50" y1="76" x2="68" y2="76" stroke="#0D5B56" stroke-width="1.8" stroke-linecap="round" />
-  <line x1="57" y1="50" x2="57" y2="76" stroke="#0D5B56" stroke-width="1.5" stroke-linecap="round" />
-  <line x1="57" y1="60" x2="68" y2="60" stroke="#0D5B56" stroke-width="1.2" stroke-linecap="round" />
+  <line x1="50" y1="74" x2="68" y2="74" stroke="#0D5B56" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="58" y1="50" x2="58" y2="74" stroke="#0D5B56" stroke-width="1.5" stroke-linecap="round" />
+  <line x1="58" y1="60" x2="68" y2="60" stroke="#0D5B56" stroke-width="1.2" stroke-linecap="round" />
 
-  <!-- Golden Spiral (Fibonacci Curve) in Antique Gold -->
+  <!-- Authentic Green Logarithmic Spiral (Fibonacci Curve) Starting in the Center -->
   <path
-    d="M 50 4 A 46 46 0 0 1 96 50 A 42 42 0 0 1 50 92 A 26 26 0 0 1 50 64 A 16 16 0 0 1 66 64 A 10 10 0 0 1 60 74"
+    d="M 64 62 A 4 4 0 0 1 68 66 A 8 8 0 0 1 60 74 A 14 14 0 0 1 50 60 A 24 24 0 0 1 74 36 A 38 38 0 0 1 96 50 A 46 46 0 0 1 50 4"
     fill="none"
-    stroke="#C5A059"
-    stroke-width="2.6"
+    stroke="#0D5B56"
+    stroke-width="2.8"
     stroke-linecap="round"
     stroke-linejoin="round"
   />
