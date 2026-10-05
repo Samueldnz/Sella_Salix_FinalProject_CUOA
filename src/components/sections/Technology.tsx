@@ -1,99 +1,55 @@
-import {
-  FlaskConical,
-  Microscope,
-  ShieldCheck,
-  Rocket,
-} from "lucide-react";
+import { Dna, FlaskConical, Microscope, ShieldCheck } from "lucide-react";
+import { useLanguage } from "../../context/LanguageContext";
 
-const process = [
-  {
-    title: "Research",
-    description:
-      "Every innovation begins with scientific investigation, technical expertise and a deep understanding of market needs.",
-    icon: FlaskConical,
-  },
-  {
-    title: "Development",
-    description:
-      "Our multidisciplinary teams transform knowledge into scalable formulations and biotechnology solutions.",
-    icon: Microscope,
-  },
-  {
-    title: "Validation",
-    description:
-      "Rigorous testing and quality assurance ensure safety, performance and regulatory compliance.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Innovation",
-    description:
-      "Validated solutions become products capable of generating long-term value for companies and consumers.",
-    icon: Rocket,
-  },
-];
+const techIcons = [Microscope, Dna, FlaskConical, ShieldCheck];
 
 export function Technology() {
+  const { t } = useLanguage();
+
   return (
-    <section
-      id="technology"
-      className="bg-surface py-28"
-    >
+    <section id="technology" className="bg-background py-28 border-b border-border">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Heading */}
-
         <div className="mx-auto max-w-3xl text-center">
-          <span className="text-sm font-semibold uppercase tracking-[0.28em] text-primary">
-            Technology
+          <span className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-primary">
+            {t.technology.eyebrow}
           </span>
 
-          <h2 className="mt-5 text-4xl font-light tracking-tight text-text lg:text-5xl">
-            Technology guided by
-            <span className="block text-primary">
-              scientific precision.
-            </span>
+          <h2 className="mt-5 font-serif text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-text">
+            {t.technology.title}
           </h2>
 
-          <p className="mt-8 text-lg leading-8 text-text-secondary">
-            Our approach combines research, development and validation
-            into a continuous innovation process that delivers reliable,
-            scalable and market-ready solutions.
+          <p className="mt-6 text-base sm:text-lg leading-relaxed text-text-secondary">
+            {t.technology.subtitle}
           </p>
         </div>
 
-        {/* Timeline */}
-
+        {/* Timeline Grid */}
         <div className="relative mt-24">
-          {/* Desktop line */}
+          <div className="absolute left-0 right-0 top-10 hidden h-px bg-border lg:block" />
 
-          <div className="absolute left-0 right-0 top-8 hidden h-px bg-border lg:block" />
-
-          <div className="grid gap-12 lg:grid-cols-4">
-            {process.map((step, index) => {
-              const Icon = step.icon;
+          <div className="grid gap-10 lg:grid-cols-4">
+            {t.technology.steps.map((step, index) => {
+              const Icon = techIcons[index % techIcons.length];
 
               return (
                 <article
                   key={step.title}
-                  className="relative"
+                  className="group relative rounded-2xl border border-border bg-surface p-7 transition-all duration-300 hover:shadow-md hover:border-primary/30"
                 >
-                  {/* Circle */}
-
-                  <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full border border-primary/15 bg-background">
-                    <Icon
-                      className="text-primary"
-                      size={28}
-                    />
+                  <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full border-2 border-primary/15 bg-background text-primary shadow-xs transition-colors duration-300 group-hover:bg-primary group-hover:text-white">
+                    <Icon size={26} />
                   </div>
 
-                  <span className="mt-6 block text-sm font-semibold uppercase tracking-[0.2em] text-primary">
-                    {String(index + 1).padStart(2, "0")}
+                  <span className="mt-6 block text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+                    Step {step.number}
                   </span>
 
-                  <h3 className="mt-3 text-2xl font-light text-text">
+                  <h3 className="mt-2 font-serif text-xl font-medium text-text">
                     {step.title}
                   </h3>
 
-                  <p className="mt-4 leading-7 text-text-secondary">
+                  <p className="mt-3 text-xs sm:text-sm leading-relaxed text-text-secondary">
                     {step.description}
                   </p>
                 </article>

@@ -1,159 +1,244 @@
 import { ArrowRight } from "lucide-react";
-import LogoNexo from "../../assets/logo/logonexo.png";
+import { HeroArtwork } from "../layout/Artwork";
+import { useLanguage } from "../../context/LanguageContext";
 
 export function Hero() {
+  const { t } = useLanguage();
+
   return (
-    <section className="relative overflow-hidden bg-background">
-      {/* Background Decoration */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -right-32 top-1/2 h-[42rem] w-[42rem] -translate-y-1/2 rounded-full border border-primary/10" />
-
-        <div className="absolute -right-24 top-1/2 h-[34rem] w-[34rem] -translate-y-1/2 rounded-full border border-primary/10" />
-
-        <div className="absolute -right-16 top-1/2 h-[26rem] w-[26rem] -translate-y-1/2 rounded-full border border-primary/10" />
-
-        <img
-          src={LogoNexo}
-          alt=""
-          aria-hidden="true"
-          className="
-            absolute
-            -right-32
-            top-1/2
-            w-[40rem]
-            -translate-y-1/2
-            opacity-[0.2]
-            pointer-events-none
-            select-none
-          "
-        />
+    <section className="relative overflow-hidden bg-background pt-20 lg:min-h-screen">
+      {/* Background Hero Artwork (Animated Rings & 3D Stand) */}
+      <div className="absolute inset-0 hidden overflow-hidden pointer-events-none lg:block">
+        <HeroArtwork />
       </div>
 
-      <div className="mx-auto flex min-h-screen max-w-7xl items-center px-6 pt-32 pb-20 lg:px-8">
-        <div className="max-w-3xl">
-          {/* Eyebrow */}
+      <div
+        className="
+          mx-auto
+          flex
+          max-w-7xl
+          flex-col
+          items-center
+          px-6
+          pt-20
+          pb-16
+          lg:min-h-[calc(100vh-5rem)]
+          lg:flex-row
+          lg:items-center
+          lg:px-8
+          lg:pt-16
+          lg:pb-20
+        "
+      >
+        <div
+          className="
+            relative
+            z-20
+            max-w-3xl
+            text-center
+            lg:text-left
+          "
+        >
+          {/* Eyebrow Badge */}
+          <div className="inline-flex items-center gap-2">
+            <span
+              className="
+                inline-flex flex-wrap justify-center lg:justify-start
+                items-center
+                rounded-full
+                border
+                border-primary/25
+                bg-primary/10
+                px-4
+                py-1.5
+                text-[11px]
+                font-semibold
+                uppercase
+                tracking-[0.22em]
+                text-primary
+                shadow-2xs
+              "
+            >
+              <span className="flex items-center gap-1.5">
+                <span className="inline-block h-2 w-2 rounded-full bg-[#009246]" />
+                <span className="inline-block h-2 w-2 rounded-full bg-white border border-border" />
+                <span className="inline-block h-2 w-2 rounded-full bg-[#CE2B37]" />
+              </span>
+              <span className="ml-2.5">{t.hero.eyebrow}</span>
+            </span>
+          </div>
 
-          <span
-            className="
-              inline-flex
-              rounded-full
-              border
-              border-primary/20
-              bg-primary/5
-              px-4
-              py-2
-              text-xs
-              font-semibold
-              uppercase
-              tracking-[0.28em]
-              text-primary
-            "
-          >
-            High-Tech Biotechnology • Cosmetics
-          </span>
-
-          {/* Title */}
-
+          {/* Main Title - Italian Serif Elegance */}
           <h1
             className="
-              mt-8
-              text-5xl
-              font-light
-              leading-tight
+              mt-6
+              font-serif
+              text-4xl
+              font-normal
+              leading-[1.12]
               tracking-tight
               text-text
+              sm:text-5xl
               md:text-6xl
-              xl:text-7xl
+              xl:text-[4.25rem]
             "
           >
-            Science that transforms ideas into
-            <span className="block text-primary">
-              successful products.
+            {t.hero.titleLine1}{" "}
+            <span className="block italic text-primary font-serif font-light">
+              {t.hero.titleLine2}
             </span>
           </h1>
 
           {/* Description */}
-
           <p
             className="
-              mt-8
+              mx-auto
+              mt-6
               max-w-2xl
-              text-lg
-              leading-8
+              text-base
+              leading-relaxed
               text-text-secondary
+              sm:text-lg
+              lg:mx-0
             "
           >
-            We combine biotechnology, cosmetic expertise and
-            scientific innovation to help companies develop
-            high-performance solutions with precision,
-            sustainability and market vision.
+            {t.hero.subtitle}
           </p>
 
           {/* Actions */}
-
-          <div className="mt-12 flex flex-col gap-4 sm:flex-row">
-            <button
+          <div
+            className="
+              mt-9
+              flex
+              flex-col
+              gap-4
+              sm:flex-row
+              sm:justify-center
+              lg:justify-start
+            "
+          >
+            <a
+              href="#expertise"
               className="
+                w-full sm:w-auto
+                inline-flex
+                items-center
+                justify-center
+                gap-2.5
+                rounded-full
+                bg-primary
+                px-8
+                py-4
+                text-xs
+                font-semibold
+                uppercase
+                tracking-wider
+                text-white
+                shadow-sm
+                transition-all
+                duration-300
+                hover:bg-primary-hover
+                hover:shadow-md
+                hover:-translate-y-0.5
+              "
+            >
+              <span>{t.hero.ctaPrimary}</span>
+              <ArrowRight size={16} />
+            </a>
+
+            <a
+              href="#contact"
+              className="
+                w-full sm:w-auto
                 inline-flex
                 items-center
                 justify-center
                 gap-2
                 rounded-full
-                bg-primary
-                px-7
-                py-4
-                font-medium
-                text-white
-                transition
-                hover:bg-primary-hover
-              "
-            >
-              Explore Our Expertise
-
-              <ArrowRight size={18} />
-            </button>
-
-            <button
-              className="
-                rounded-full
                 border
-                border-border
-                bg-white
-                px-7
+                border-border-strong
+                bg-surface
+                px-8
                 py-4
-                font-medium
+                text-xs
+                font-semibold
+                uppercase
+                tracking-wider
                 text-primary
-                transition
-                hover:border-primary
+                transition-all
+                duration-300
+                hover:border-accent
+                hover:text-accent
+                hover:shadow-2xs
               "
             >
-              Contact Us
-            </button>
+              <span>{t.hero.ctaSecondary}</span>
+            </a>
           </div>
 
-          {/* Metrics */}
-
-          <div className="mt-20 flex flex-wrap gap-12">
+          {/* Real-World Industry Metrics */}
+          <div
+            className="
+              mt-14
+              grid
+              w-full
+              grid-cols-2
+              gap-6
+              pt-8
+              border-t
+              border-border/80
+              sm:grid-cols-4
+              lg:gap-8
+            "
+          >
             <div>
-              <h3 className="text-3xl font-light text-primary">2</h3>
-              <p className="mt-2 text-sm uppercase tracking-widest text-text-secondary">
-                Core Expertises
+              <div className="font-serif text-3xl font-semibold text-accent sm:text-4xl">
+                {t.hero.stat1Value}
+              </div>
+              <p className="mt-1 text-xs uppercase tracking-wider text-text-secondary font-medium">
+                {t.hero.stat1Label}
               </p>
             </div>
 
             <div>
-              <h3 className="text-3xl font-light text-primary">100%</h3>
-              <p className="mt-2 text-sm uppercase tracking-widest text-text-secondary">
-                Science Driven
+              <div className="font-serif text-3xl font-semibold text-primary sm:text-4xl">
+                {t.hero.stat2Value}
+              </div>
+              <p className="mt-1 text-xs uppercase tracking-wider text-text-secondary font-medium">
+                {t.hero.stat2Label}
               </p>
             </div>
 
             <div>
-              <h3 className="text-3xl font-light text-primary">∞</h3>
-              <p className="mt-2 text-sm uppercase tracking-widest text-text-secondary">
-                Innovation
+              <div className="font-serif text-3xl font-semibold text-accent sm:text-4xl">
+                {t.hero.stat3Value}
+              </div>
+              <p className="mt-1 text-xs uppercase tracking-wider text-text-secondary font-medium">
+                {t.hero.stat3Label}
               </p>
             </div>
+
+            <div>
+              <div className="font-serif text-3xl font-semibold text-primary sm:text-4xl">
+                {t.hero.stat4Value}
+              </div>
+              <p className="mt-1 text-xs uppercase tracking-wider text-text-secondary font-medium">
+                {t.hero.stat4Label}
+              </p>
+            </div>
+          </div>
+
+          {/* Mobile Illustration view */}
+          <div
+            className="
+              relative
+              mt-10
+              h-[22rem]
+              overflow-hidden
+              lg:hidden
+            "
+          >
+            <HeroArtwork mobile />
           </div>
         </div>
       </div>

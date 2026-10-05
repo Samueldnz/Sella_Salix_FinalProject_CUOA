@@ -1,114 +1,82 @@
-import {
-  Search,
-  Beaker,
-  TestTube,
-  ShieldCheck,
-  PackageCheck,
-} from "lucide-react";
+import { Beaker, PackageCheck, Search, ShieldCheck, TestTube } from "lucide-react";
+import { useLanguage } from "../../context/LanguageContext";
 
-const process = [
-  {
-    number: "01",
-    title: "Discovery",
-    description:
-      "Understanding the client's objectives, challenges and opportunities to define the best scientific strategy.",
-    icon: Search,
-  },
-  {
-    number: "02",
-    title: "Scientific Assessment",
-    description:
-      "Technical evaluation, feasibility studies and identification of the most suitable biotechnology and cosmetic approaches.",
-    icon: Beaker,
-  },
-  {
-    number: "03",
-    title: "Development",
-    description:
-      "Formulation, prototyping and iterative development supported by multidisciplinary expertise.",
-    icon: TestTube,
-  },
-  {
-    number: "04",
-    title: "Validation",
-    description:
-      "Performance verification, quality control and regulatory compliance before product delivery.",
-    icon: ShieldCheck,
-  },
-  {
-    number: "05",
-    title: "Launch & Support",
-    description:
-      "From production readiness to continuous technical support, ensuring long-term success.",
-    icon: PackageCheck,
-  },
-];
+const processIcons = [Search, Beaker, ShieldCheck, TestTube, PackageCheck];
 
 export function Process() {
+  const { t } = useLanguage();
+
   return (
-    <section id="process" className="bg-background py-28">
+    <section id="process" className="bg-surface py-28 border-b border-border">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Heading */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="text-sm font-semibold uppercase tracking-[0.28em] text-primary">
-            Our Process
+          <span className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-primary">
+            {t.process.eyebrow}
           </span>
 
-          <h2 className="mt-5 text-4xl font-light tracking-tight text-text lg:text-5xl">
-            From concept to
-            <span className="block text-primary">
-              market-ready solutions.
-            </span>
+          <h2 className="mt-5 font-serif text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-text">
+            {t.process.title}
           </h2>
 
-          <p className="mt-8 text-lg leading-8 text-text-secondary">
-            Every project follows a structured scientific workflow,
-            ensuring transparency, precision and consistent results
-            throughout the development journey.
+          <p className="mt-6 text-base sm:text-lg leading-relaxed text-text-secondary">
+            {t.process.subtitle}
           </p>
         </div>
 
         {/* Timeline */}
-        <div className="relative mt-24">
+        <div className="relative mt-20">
           <div className="absolute left-6 top-0 h-full w-px bg-border lg:left-1/2 lg:-translate-x-1/2" />
 
-          <div className="space-y-16">
-            {process.map((step, index) => {
-              const Icon = step.icon;
+          <div className="space-y-12 sm:space-y-16">
+            {t.process.steps.map((step, index) => {
+              const Icon = processIcons[index % processIcons.length];
               const reverse = index % 2 === 1;
 
               return (
                 <div
                   key={step.number}
-                  className={`relative grid items-center gap-10 lg:grid-cols-2 ${
+                  className={`relative grid items-center gap-8 lg:grid-cols-2 ${
                     reverse ? "lg:[&>*:first-child]:order-2" : ""
                   }`}
                 >
-                  {/* Content */}
+                  {/* Step Card */}
                   <div
-                    className={`rounded-3xl border border-border bg-surface p-8 shadow-sm ${
+                    className={`rounded-3xl border border-border bg-background p-8 sm:p-9 shadow-xs transition-all duration-300 hover:shadow-md hover:border-primary/30 ${
                       reverse ? "lg:text-right" : ""
                     }`}
                   >
-                    <span className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">
-                      {step.number}
-                    </span>
+                    <div className={`flex items-center gap-3 ${reverse ? "lg:justify-end" : ""}`}>
+                      <span className="font-serif text-2xl font-bold text-accent">
+                        {step.number}
+                      </span>
+                      <span className="text-[11px] font-semibold uppercase tracking-widest text-text-muted">
+                        CDMO Stage
+                      </span>
+                    </div>
 
-                    <h3 className="mt-3 text-3xl font-light text-text">
+                    <h3 className="mt-3 font-serif text-2xl font-medium text-text">
                       {step.title}
                     </h3>
 
-                    <p className="mt-4 leading-8 text-text-secondary">
+                    <p className="mt-4 text-sm sm:text-base leading-relaxed text-text-secondary">
                       {step.description}
                     </p>
+
+                    <div className={`mt-5 pt-4 border-t border-border/70 ${reverse ? "lg:flex lg:justify-end" : ""}`}>
+                      <span className="inline-block rounded-full bg-primary/10 px-3.5 py-1 text-xs font-semibold text-primary">
+                        {step.deliverable}
+                      </span>
+                    </div>
                   </div>
 
-                  {/* Timeline Node */}
-                  <div className="absolute left-6 flex h-14 w-14 -translate-x-1/2 items-center justify-center rounded-full border border-primary/20 bg-background lg:left-1/2">
-                    <Icon size={24} className="text-primary" />
+                  {/* Node Circle on timeline */}
+                  <div className="absolute left-6 hidden h-14 w-14 -translate-x-1/2 items-center justify-center rounded-full border-2 border-primary/20 bg-surface shadow-xs md:flex lg:left-1/2 text-primary">
+                    <Icon size={22} />
                   </div>
 
-                  <div />
+                  {/* Empty Spacer */}
+                  <div className="hidden lg:block" />
                 </div>
               );
             })}

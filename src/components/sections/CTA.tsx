@@ -1,90 +1,94 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { useLanguage } from "../../context/LanguageContext";
 
 export function CTA() {
+  const { t } = useLanguage();
+
   return (
-    <section className="relative overflow-hidden py-28">
-      {/* Background */}
-      <div className="absolute inset-0 bg-primary" />
+    <section className="relative overflow-hidden bg-primary py-28 text-white">
+      {/* Decorative subtle ambient circles */}
+      <div className="absolute -right-40 -top-40 h-96 w-96 rounded-full border border-white/10 pointer-events-none" />
+      <div className="absolute -left-24 -bottom-24 h-80 w-80 rounded-full border border-white/10 pointer-events-none" />
 
-      {/* Decorative circles */}
-      <div className="absolute -right-40 -top-40 h-96 w-96 rounded-full border border-white/10" />
-      <div className="absolute -left-24 bottom-0 h-72 w-72 rounded-full border border-white/10" />
-
-      {/* Logo watermark */}
+      {/* Stylized background watermark logo */}
       <img
-        src="/logo-symbol.svg"
+        src="/logo.svg"
         alt=""
-        aria-hidden
+        aria-hidden="true"
         className="
           absolute
-          right-0
+          right-6
           top-1/2
-          w-[28rem]
+          w-[32rem]
           -translate-y-1/2
           opacity-5
+          invert
           select-none
           pointer-events-none
         "
       />
 
-      <div className="relative mx-auto max-w-5xl px-6 text-center lg:px-8">
-        <span className="inline-flex rounded-full border border-white/15 bg-white/5 px-5 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-primary-light">
-          Collaboration Starts Here
+      <div className="relative mx-auto max-w-4xl px-6 text-center lg:px-8">
+        <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-primary-light">
+          <Sparkles size={14} />
+          <span>{t.cta.badge}</span>
         </span>
 
-        <h2 className="mt-8 text-4xl font-light leading-tight tracking-tight text-white md:text-5xl lg:text-6xl">
-          Let's build the next
-          <span className="block text-primary-light">
-            scientific innovation together.
-          </span>
+        <h2 className="mt-7 font-serif text-3xl sm:text-4xl lg:text-5xl font-normal leading-tight tracking-tight text-white">
+          {t.cta.title}
         </h2>
 
-        <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-white/75">
-          Whether you're developing a biotechnology solution or an
-          innovative cosmetic product, our multidisciplinary team is
-          ready to support your project from concept to market.
+        <p className="mx-auto mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-white/80">
+          {t.cta.subtitle}
         </p>
 
-        <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
             href="#contact"
             className="
               inline-flex
               items-center
-              gap-3
+              gap-2.5
               rounded-full
               bg-white
               px-8
               py-4
-              font-medium
+              text-xs
+              font-semibold
+              uppercase
+              tracking-wider
               text-primary
+              shadow-lg
               transition-all
               duration-300
               hover:-translate-y-0.5
               hover:bg-background
+              hover:shadow-xl
             "
           >
-            Start a Conversation
-
-            <ArrowRight size={18} />
+            <span>{t.cta.btnPrimary}</span>
+            <ArrowRight size={16} />
           </a>
 
           <a
-            href="#about"
+            href="#heritage"
             className="
               rounded-full
               border
-              border-white/20
+              border-white/30
               px-8
               py-4
-              font-medium
+              text-xs
+              font-semibold
+              uppercase
+              tracking-wider
               text-white
               transition-all
               duration-300
               hover:bg-white/10
             "
           >
-            Learn More
+            <span>{t.cta.btnSecondary}</span>
           </a>
         </div>
       </div>

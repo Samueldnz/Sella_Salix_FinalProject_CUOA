@@ -1,105 +1,52 @@
-import {
-  Atom,
-  FlaskConical,
-  Leaf,
-  Microscope,
-} from "lucide-react";
+import { Atom, FlaskConical, Leaf, ShieldCheck } from "lucide-react";
+import { useLanguage } from "../../context/LanguageContext";
 
-const pillars = [
-  {
-    icon: FlaskConical,
-    title: "Biotechnology",
-    description:
-      "Scientific knowledge applied to innovative and high-performance solutions.",
-  },
-  {
-    icon: Atom,
-    title: "Cosmetic Innovation",
-    description:
-      "Advanced formulations designed to combine efficacy, safety and market value.",
-  },
-  {
-    icon: Microscope,
-    title: "Research & Development",
-    description:
-      "Continuous development supported by technical expertise and laboratory precision.",
-  },
-  {
-    icon: Leaf,
-    title: "Sustainability",
-    description:
-      "Responsible innovation focused on long-term environmental and business impact.",
-  },
-];
+const icons = [ShieldCheck, FlaskConical, Atom, Leaf];
 
 export function About() {
-  return (
-    <section
-      id="about"
-      className="bg-surface py-28"
-    >
-      <div className="mx-auto grid max-w-7xl gap-20 px-6 lg:grid-cols-2 lg:px-8">
-        {/* Left */}
+  const { t } = useLanguage();
 
+  return (
+    <section id="about" className="bg-background py-28 border-b border-border">
+      <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-2 lg:px-8 items-center">
+        {/* Left Column: Narrative & Mission */}
         <div>
-          <span className="text-sm font-semibold uppercase tracking-[0.28em] text-primary">
-            About Nexofarm
+          <span className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-primary">
+            {t.about.eyebrow}
           </span>
 
-          <h2 className="mt-5 text-4xl font-light leading-tight text-text lg:text-5xl">
-            Science, innovation and expertise working together.
+          <h2 className="mt-5 font-serif text-3xl sm:text-4xl lg:text-5xl font-normal leading-[1.15] text-text">
+            {t.about.title}
           </h2>
 
-          <div className="mt-8 space-y-6 text-lg leading-8 text-text-secondary">
-            <p>
-              Nexofarm connects biotechnology and cosmetic science
-              to transform research into products that create real
-              value for companies and consumers.
-            </p>
-
-            <p>
-              Our multidisciplinary approach combines scientific
-              knowledge, innovation and market understanding,
-              enabling the development of reliable, efficient and
-              future-oriented solutions.
-            </p>
+          <div className="mt-8 space-y-5 text-base sm:text-lg leading-relaxed text-text-secondary">
+            <p>{t.about.p1}</p>
+            <p>{t.about.p2}</p>
+            <p>{t.about.p3}</p>
           </div>
         </div>
 
-        {/* Right */}
-
-        <div className="grid gap-6 sm:grid-cols-2">
-          {pillars.map((pillar) => {
-            const Icon = pillar.icon;
+        {/* Right Column: 4 Pillars Cards */}
+        <div className="grid gap-5 sm:grid-cols-2">
+          {t.about.pillars.map((pillar, index) => {
+            const Icon = icons[index % icons.length];
 
             return (
               <article
                 key={pillar.title}
-                className="
-                  rounded-2xl
-                  border
-                  border-border
-                  bg-background
-                  p-7
-                  transition-all
-                  duration-300
-                  hover:-translate-y-1
-                  hover:border-primary/20
-                  hover:shadow-md
-                "
+                className="group relative overflow-hidden rounded-2xl border border-border bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-md"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
-                  <Icon
-                    size={24}
-                    className="text-primary"
-                  />
+                <div className="absolute inset-x-0 top-0 h-1 bg-accent transition-transform duration-300 group-hover:scale-x-105" />
+                
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-white">
+                  <Icon size={24} />
                 </div>
 
-                <h3 className="mt-6 text-xl font-medium text-text">
+                <h3 className="mt-6 font-serif text-xl font-medium text-text">
                   {pillar.title}
                 </h3>
 
-                <p className="mt-3 text-base leading-7 text-text-secondary">
+                <p className="mt-3 text-xs sm:text-sm leading-relaxed text-text-secondary">
                   {pillar.description}
                 </p>
               </article>

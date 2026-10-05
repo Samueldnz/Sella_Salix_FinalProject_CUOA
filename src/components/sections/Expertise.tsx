@@ -1,140 +1,85 @@
-import {
-  ArrowRight,
-  Dna,
-  Sparkles,
-  Check,
-} from "lucide-react";
+import { ArrowRight, Check, Dna, FlaskConical, Pill, Sparkles } from "lucide-react";
+import { useLanguage } from "../../context/LanguageContext";
 
-const expertise = [
-  {
-    title: "Biotechnology",
-    description:
-      "Advanced scientific solutions that transform research into innovative products, processes and technologies.",
-    icon: Dna,
-    features: [
-      "Research & Development",
-      "Laboratory Innovation",
-      "Scientific Validation",
-      "Industrial Applications",
-    ],
-  },
-  {
-    title: "Cosmetic Science",
-    description:
-      "High-performance cosmetic development combining efficacy, sustainability and consumer experience.",
-    icon: Sparkles,
-    features: [
-      "Advanced Formulations",
-      "Dermocosmetics",
-      "Performance Ingredients",
-      "Market-Oriented Innovation",
-    ],
-  },
-];
+const disciplineIcons = [Dna, Sparkles, Pill, FlaskConical];
 
 export function Expertise() {
-  return (
-    <section
-      id="expertise"
-      className="bg-background py-28"
-    >
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Heading */}
+  const { t } = useLanguage();
 
+  return (
+    <section id="expertise" className="bg-surface py-28 border-b border-border">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        {/* Section Heading */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="text-sm font-semibold uppercase tracking-[0.28em] text-primary">
-            Our Expertise
+          <span className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-primary">
+            {t.expertise.eyebrow}
           </span>
 
-          <h2 className="mt-5 text-4xl font-light tracking-tight text-text lg:text-5xl">
-            Two expertises.
-            <br />
-            <span className="text-primary">
-              One scientific mindset.
-            </span>
+          <h2 className="mt-5 font-serif text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-text">
+            {t.expertise.title}
           </h2>
 
-          <p className="mt-8 text-lg leading-8 text-text-secondary">
-            We integrate biotechnology and cosmetic science to
-            accelerate innovation, ensuring precision,
-            sustainability and real market impact.
+          <p className="mt-6 text-base sm:text-lg leading-relaxed text-text-secondary">
+            {t.expertise.subtitle}
           </p>
         </div>
 
-        {/* Cards */}
-
-        <div className="mt-20 grid gap-8 lg:grid-cols-2">
-          {expertise.map((item) => {
-            const Icon = item.icon;
+        {/* 4 Disciplines Grid */}
+        <div className="mt-20 grid gap-8 md:grid-cols-2">
+          {t.expertise.items.map((item, index) => {
+            const Icon = disciplineIcons[index % disciplineIcons.length];
 
             return (
               <article
                 key={item.title}
-                className="
-                  group
-                  rounded-3xl
-                  border
-                  border-border
-                  bg-surface
-                  p-10
-                  transition-all
-                  duration-300
-                  hover:-translate-y-1
-                  hover:border-primary/20
-                  hover:shadow-lg
-                "
+                className="group relative flex flex-col justify-between rounded-3xl border border-border bg-background p-8 sm:p-10 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg"
               >
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10">
-                  <Icon
-                    className="text-primary"
-                    size={30}
-                  />
+                <div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-white">
+                      <Icon size={28} />
+                    </div>
+                    <span className="rounded-full border border-border bg-surface px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-text-secondary">
+                      {item.category}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-7 font-serif text-2xl sm:text-3xl font-medium text-text">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-4 text-sm sm:text-base leading-relaxed text-text-secondary">
+                    {item.description}
+                  </p>
+
+                  <div className="mt-8 pt-6 border-t border-border/80">
+                    <h4 className="text-xs font-semibold uppercase tracking-wider text-text-muted mb-3.5">
+                      Technical Capabilities:
+                    </h4>
+                    <ul className="space-y-3">
+                      {item.features.map((feature) => (
+                        <li key={feature} className="flex items-center gap-3">
+                          <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                            <Check size={12} />
+                          </div>
+                          <span className="text-xs sm:text-sm text-text-secondary font-medium">
+                            {feature}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
 
-                <h3 className="mt-8 text-3xl font-light text-text">
-                  {item.title}
-                </h3>
-
-                <p className="mt-5 leading-8 text-text-secondary">
-                  {item.description}
-                </p>
-
-                <ul className="mt-10 space-y-4">
-                  {item.features.map((feature) => (
-                    <li
-                      key={feature}
-                      className="flex items-center gap-3"
-                    >
-                      <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10">
-                        <Check
-                          size={14}
-                          className="text-primary"
-                        />
-                      </div>
-
-                      <span className="text-text-secondary">
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                <button
-                  className="
-                    mt-12
-                    inline-flex
-                    items-center
-                    gap-2
-                    font-medium
-                    text-primary
-                    transition-all
-                    group-hover:gap-3
-                  "
-                >
-                  Learn More
-
-                  <ArrowRight size={18} />
-                </button>
+                <div className="mt-8 pt-6">
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary transition-all duration-200 group-hover:text-accent group-hover:gap-3"
+                  >
+                    <span>Request Formulation Specs</span>
+                    <ArrowRight size={14} />
+                  </a>
+                </div>
               </article>
             );
           })}

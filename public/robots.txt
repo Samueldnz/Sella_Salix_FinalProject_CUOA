@@ -1,0 +1,6 @@
+# Robots.txt for Nexofarm (Sella & Salix Joint Venture)
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://www.nexofarm.com/sitemap.xml
