@@ -2,11 +2,11 @@
 
 :root {
   /* ==========================================================================
-     FONTS - TRADITIONAL ITALIAN & TIMELESS EDITORIAL
+     FONTS - TRADITIONAL ITALIAN & MODERN BIOTECH
      ========================================================================== */
-  --font-serif: "Bodoni Moda", "Cormorant Garamond", Georgia, serif;
-  --font-display: "Cinzel", "Bodoni Moda", serif;
-  --font-sans: "EB Garamond", "Cormorant Garamond", Georgia, serif;
+  --font-serif: "Gilroy", "Plus Jakarta Sans", "Inter", Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Gilroy", "Plus Jakarta Sans", "Inter", Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Gilroy", "Plus Jakarta Sans", "Inter", Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   /* ==========================================================================
      COLORS - BRAND (ITALIAN RACING / FORESTS & VENETIAN RED)

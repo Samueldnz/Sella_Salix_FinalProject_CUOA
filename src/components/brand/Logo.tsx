@@ -20,7 +20,7 @@ interface EmblemProps {
 }
 
 // Pure Fibonacci Golden Ratio Circular Emblem declared outside render
-// Exact geometric realization matching authentic Nexofarm identity (media_1791307447538)
+// Authentic downward-curving Fibonacci spiral matching original Nexofarm geometry
 const FibonacciEmblem: React.FC<EmblemProps> = ({
   dimension = 100,
   withCream = true,
@@ -66,7 +66,7 @@ const FibonacciEmblem: React.FC<EmblemProps> = ({
       className="transition-colors duration-300"
     />
 
-    {/* Left Hemisphere Cosmetic Cream Drop / Organic Swirl */}
+    {/* Left Hemisphere Cosmetic Cream Drop / Organic Swirl (from original logonexo.png) */}
     {withCream && (
       <path
         d="M 50 10 C 30 10 12 28 12 50 C 12 72 30 90 50 90 C 42 78 35 65 35 50 C 35 34 42 22 50 10 Z"
@@ -77,7 +77,7 @@ const FibonacciEmblem: React.FC<EmblemProps> = ({
       />
     )}
 
-    {/* Center Vertical Axis (Splits Circle from Top to Bottom) */}
+    {/* Center Vertical Axis (Splits Circle from top to bottom) */}
     <line
       x1="50"
       y1="4"
@@ -88,65 +88,66 @@ const FibonacciEmblem: React.FC<EmblemProps> = ({
       strokeLinecap="round"
     />
 
-    {/* Horizontal Axis in Right Hemisphere (Equator) */}
+    {/* Right Hemisphere Golden Rectangle Grid Subdivisions */}
+    {/* 1. Horizontal Golden Cut dividing right half at y=52 */}
     <line
       x1="50"
-      y1="50"
-      x2="96"
-      y2="50"
+      y1="52"
+      x2="94"
+      y2="52"
       stroke={strokeColor}
       strokeWidth="2.2"
       strokeLinecap="round"
     />
 
-    {/* Golden Rectangle Subdivisions in Lower-Right Quadrant */}
-    {/* 1. Vertical Golden Cut at x=68 */}
+    {/* 2. Vertical Golden Cut in bottom-right quadrant at x=68 */}
     <line
       x1="68"
-      y1="50"
+      y1="52"
       x2="68"
-      y2="92"
+      y2="88"
       stroke={strokeColor}
       strokeWidth="2"
       strokeLinecap="round"
     />
 
-    {/* 2. Horizontal Golden Cut at y=74 */}
+    {/* 3. Horizontal Golden Cut at y=68 */}
     <line
       x1="50"
-      y1="74"
+      y1="68"
       x2="68"
-      y2="74"
+      y2="68"
       stroke={strokeColor}
       strokeWidth="1.8"
       strokeLinecap="round"
     />
 
-    {/* 3. Vertical Golden Cut at x=58 */}
+    {/* 4. Vertical Golden Cut at x=58 */}
     <line
       x1="58"
-      y1="50"
+      y1="52"
       x2="58"
-      y2="74"
+      y2="68"
       stroke={strokeColor}
       strokeWidth="1.5"
       strokeLinecap="round"
     />
 
-    {/* 4. Inner Micro-Cut at y=60 */}
+    {/* 5. Inner Micro-Cut at y=58 */}
     <line
-      x1="58"
-      y1="60"
-      x2="68"
-      y2="60"
+      x1="50"
+      y1="58"
+      x2="58"
+      y2="58"
       stroke={strokeColor}
       strokeWidth="1.2"
       strokeLinecap="round"
     />
 
-    {/* Authentic Green Fibonacci Logarithmic Spiral - Sweeping downwards inside lower-right quadrant to (96, 50) */}
+    {/* Authentic Downward-Curving Green Fibonacci Spiral */}
+    {/* Starts inside the innermost rectangle and sweeps downward around the bottom quadrant to (93, 52) */}
     <path
-      d="M 62 60 A 4 4 0 0 1 68 64 A 10 10 0 0 1 58 74 A 18 18 0 0 1 50 64 A 28 28 0 0 0 68 92 A 44 44 0 0 0 96 50"
+      d="M 54 55 C 57 55 58 57 58 59 C 58 64 54 68 50 68 C 50 78 58 88 68 88 C 80 88 90 74 93 52"
       fill="none"
       stroke={strokeColor}
       strokeWidth="2.8"
@@ -161,7 +162,7 @@ export const Logo: React.FC<LogoProps> = ({
   variant = "horizontal",
   theme = "light",
   size = "md",
-  withSubtitle = true,
+  withSubtitle = false,
 }) => {
   const isDark = theme === "dark";
   const strokeColor = isDark ? "#ffffff" : "#0D5B56";
@@ -173,8 +174,8 @@ export const Logo: React.FC<LogoProps> = ({
   const sizeClasses = {
     sm: "h-7",
     md: "h-10",
-    lg: "h-13",
-    xl: "h-18",
+    lg: "h-12",
+    xl: "h-16",
   }[size];
 
   // Standalone Fibonacci Symbol Variant
@@ -196,7 +197,7 @@ export const Logo: React.FC<LogoProps> = ({
 
   // Full / Horizontal Brand Identity (with NEX[O]FARM typographic integration)
   return (
-    <div className={`inline-flex items-center gap-3 ${className}`}>
+    <div className={`inline-flex items-center gap-2.5 ${className}`}>
       {/* Emblem Crest */}
       <div className="shrink-0 flex items-center justify-center">
         <FibonacciEmblem
@@ -212,12 +213,12 @@ export const Logo: React.FC<LogoProps> = ({
 
       {/* Wordmark with integrated Fibonacci 'O' */}
       <div className="flex flex-col justify-center select-none">
-        <div className="flex items-center tracking-[0.15em] font-serif font-bold text-lg sm:text-xl lg:text-[1.35rem] leading-none">
-          <span style={{ color: strokeColor }} className="tracking-[0.16em]">
+        <div className="flex items-center tracking-[0.14em] font-sans font-bold text-lg sm:text-xl lg:text-[1.3rem] leading-none">
+          <span style={{ color: strokeColor }} className="font-bold tracking-[0.16em]">
             NEX
           </span>
 
-          {/* Inline miniature Fibonacci circle replacing the letter O with exact matching green spiral */}
+          {/* Inline miniature Fibonacci circle replacing the letter O with clearly visible downward green spiral */}
           <span className="inline-flex items-center justify-center px-[2px]">
             <svg
               viewBox="0 0 100 100"
@@ -243,31 +244,31 @@ export const Logo: React.FC<LogoProps> = ({
               />
               <line
                 x1="50"
-                y1="50"
-                x2="96"
-                y2="50"
+                y1="52"
+                x2="94"
+                y2="52"
                 stroke={strokeColor}
                 strokeWidth="5"
               />
               <line
                 x1="68"
-                y1="50"
+                y1="52"
                 x2="68"
-                y2="92"
+                y2="88"
                 stroke={strokeColor}
                 strokeWidth="4.5"
               />
               <line
                 x1="50"
-                y1="74"
+                y1="68"
                 x2="68"
-                y2="74"
+                y2="68"
                 stroke={strokeColor}
                 strokeWidth="4"
               />
-              {/* Green spiral sweeping downwards inside lower-right quadrant to (96, 50) */}
+              {/* Downward green spiral inside the letter O */}
               <path
-                d="M 62 60 A 4 4 0 0 1 68 64 A 10 10 0 0 1 58 74 A 18 18 0 0 1 50 64 A 28 28 0 0 0 68 92 A 44 44 0 0 0 96 50"
+                d="M 54 55 C 57 55 58 57 58 59 C 58 64 54 68 50 68 C 50 78 58 88 68 88 C 80 88 90 74 93 52"
                 fill="none"
                 stroke={strokeColor}
                 strokeWidth="5.5"
@@ -276,7 +277,7 @@ export const Logo: React.FC<LogoProps> = ({
             </svg>
           </span>
 
-          <span style={{ color: strokeColor }} className="tracking-[0.16em]">
+          <span style={{ color: strokeColor }} className="font-bold tracking-[0.16em]">
             FARM
           </span>
         </div>
