@@ -1,4 +1,3 @@
-import { ArrowRight, Sparkles } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 
 export function CTA() {
@@ -29,9 +28,8 @@ export function CTA() {
       />
 
       <div className="relative mx-auto max-w-4xl px-6 text-center lg:px-8">
-        <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-primary-light">
-          <Sparkles size={14} />
-          <span>{t.cta.badge}</span>
+        <span className="hidden sm:inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-primary-light">
+          {t.cta.badge}
         </span>
 
         <h2 className="mt-7 font-serif text-3xl sm:text-4xl lg:text-5xl font-normal leading-tight tracking-tight text-white">
@@ -48,7 +46,7 @@ export function CTA() {
             className="
               inline-flex
               items-center
-              gap-2.5
+              justify-center
               rounded-full
               bg-white
               px-8
@@ -67,7 +65,6 @@ export function CTA() {
             "
           >
             <span>{t.cta.btnPrimary}</span>
-            <ArrowRight size={16} />
           </a>
 
           <a

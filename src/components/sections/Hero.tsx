@@ -1,4 +1,3 @@
-import { ArrowRight, Award, Building2, CheckCircle2, Sparkles } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 import standImage from "../../assets/images/stand.png";
 
@@ -16,49 +15,15 @@ export function Hero() {
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
           {/* Left Column: Vision, Identity & Actions (Col 1-7) */}
           <div className="text-center lg:text-left lg:col-span-7">
-            {/* Eyebrow Badge */}
-            <div className="inline-flex items-center gap-2">
-              <span
-                className="
-                  inline-flex items-center
-                  rounded-full
-                  border
-                  border-primary/25
-                  bg-primary/10
-                  px-4
-                  py-1.5
-                  text-[11px]
-                  font-semibold
-                  uppercase
-                  tracking-[0.22em]
-                  text-primary
-                  shadow-2xs
-                "
-              >
-                <span className="flex items-center gap-1.5">
-                  <span className="inline-block h-2 w-2 rounded-full bg-[#009246]" />
-                  <span className="inline-block h-2 w-2 rounded-full bg-white border border-border" />
-                  <span className="inline-block h-2 w-2 rounded-full bg-[#CE2B37]" />
-                </span>
-                <span className="ml-2.5">{t.hero.eyebrow}</span>
+            {/* Traditional Minimal Eyebrow (Hidden on mobile as requested to prevent clutter) */}
+            <div className="hidden sm:inline-flex items-center">
+              <span className="rounded-full border border-primary/25 bg-primary/5 px-4 py-1 text-xs font-serif italic text-primary tracking-wide">
+                Vicenza, Veneto · Est. 1920 & 1998 · Italian Life Sciences
               </span>
             </div>
 
-            {/* Main Title - Italian Serif Elegance */}
-            <h1
-              className="
-                mt-6
-                font-serif
-                text-4xl
-                font-normal
-                leading-[1.12]
-                tracking-tight
-                text-text
-                sm:text-5xl
-                md:text-6xl
-                xl:text-[4rem]
-              "
-            >
+            {/* Main Title - Pure Italian Bodoni / Garamond Elegance */}
+            <h1 className="mt-4 sm:mt-6 font-serif text-3xl sm:text-5xl md:text-6xl xl:text-[4rem] font-normal leading-[1.14] tracking-tight text-text">
               {t.hero.titleLine1}{" "}
               <span className="block italic text-primary font-serif font-light">
                 {t.hero.titleLine2}
@@ -66,102 +31,32 @@ export function Hero() {
             </h1>
 
             {/* Description */}
-            <p
-              className="
-                mx-auto
-                mt-6
-                max-w-2xl
-                text-base
-                leading-relaxed
-                text-text-secondary
-                sm:text-lg
-                lg:mx-0
-              "
-            >
+            <p className="mx-auto mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-text-secondary font-sans lg:mx-0">
               {t.hero.subtitle}
             </p>
 
-            {/* Action Buttons */}
-            <div
-              className="
-                mt-9
-                flex
-                flex-col
-                gap-4
-                sm:flex-row
-                sm:justify-center
-                lg:justify-start
-              "
-            >
+            {/* Action Buttons (Clean traditional styling without generic icons) */}
+            <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
               <a
                 href="#expertise"
-                className="
-                  w-full sm:w-auto
-                  inline-flex
-                  items-center
-                  justify-center
-                  gap-2.5
-                  rounded-full
-                  bg-primary
-                  px-8
-                  py-4
-                  text-xs
-                  font-semibold
-                  uppercase
-                  tracking-wider
-                  text-white
-                  shadow-sm
-                  transition-all
-                  duration-300
-                  hover:bg-primary-hover
-                  hover:shadow-md
-                  hover:-translate-y-0.5
-                "
+                className="w-full sm:w-auto inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-xs font-semibold uppercase tracking-widest text-white shadow-sm transition-all duration-300 hover:bg-primary-hover hover:shadow-md hover:-translate-y-0.5 cursor-pointer"
               >
-                <span>{t.hero.ctaPrimary}</span>
-                <ArrowRight size={16} />
+                {t.hero.ctaPrimary}
               </a>
 
               <a
                 href="#contact"
-                className="
-                  w-full sm:w-auto
-                  inline-flex
-                  items-center
-                  justify-center
-                  gap-2
-                  rounded-full
-                  border
-                  border-border-strong
-                  bg-surface
-                  px-8
-                  py-4
-                  text-xs
-                  font-semibold
-                  uppercase
-                  tracking-wider
-                  text-primary
-                  transition-all
-                  duration-300
-                  hover:border-accent
-                  hover:text-accent
-                  hover:shadow-2xs
-                "
+                className="w-full sm:w-auto inline-flex items-center justify-center rounded-full border border-border-strong bg-surface px-8 py-4 text-xs font-semibold uppercase tracking-widest text-primary transition-all duration-300 hover:border-accent hover:text-accent hover:shadow-2xs cursor-pointer"
               >
-                <span>{t.hero.ctaSecondary}</span>
+                {t.hero.ctaSecondary}
               </a>
             </div>
 
-            {/* Micro Reassurances */}
-            <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-xs text-text-muted">
-              <span className="inline-flex items-center gap-1.5">
-                <CheckCircle2 size={14} className="text-primary" />
-                <span>EU GMP & AIFA Authorized Facilities</span>
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <Building2 size={14} className="text-accent" />
-                <span>Plants in Schio (VI) & Ivrea (TO)</span>
-              </span>
+            {/* Micro Reassurances (Typographic without noisy icons) */}
+            <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-x-4 gap-y-1 text-xs text-text-muted font-serif italic">
+              <span>EU GMP & AIFA Authorized Facilities</span>
+              <span className="text-border-strong hidden sm:inline">•</span>
+              <span>Production Plants in Schio (VI) & Ivrea (TO)</span>
             </div>
           </div>
 
@@ -169,7 +64,7 @@ export function Hero() {
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full max-w-lg lg:max-w-none">
               {/* Outer Glow Halo */}
-              <div className="absolute -inset-1.5 rounded-[2rem] bg-gradient-to-tr from-primary/20 via-accent/20 to-primary/10 blur-xl opacity-70" />
+              <div className="absolute -inset-1.5 rounded-[2rem] bg-gradient-to-tr from-primary/15 via-accent/15 to-primary/10 blur-xl opacity-70" />
 
               {/* Showcase Frame */}
               <div className="relative overflow-hidden rounded-[1.75rem] border border-border/80 bg-surface shadow-xl">
@@ -183,24 +78,18 @@ export function Hero() {
                   />
                 </div>
 
-                {/* Editorial Caption Bar */}
-                <div className="border-t border-border/80 bg-surface/95 px-5 py-4 backdrop-blur-xs flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
-                      <Sparkles size={16} />
-                    </span>
-                    <div>
-                      <p className="text-xs font-semibold text-text tracking-wide uppercase">
-                        Nexofarm Pavilion · CPHI Milan
-                      </p>
-                      <p className="text-[11px] text-text-muted">
-                        High-Tech Biotechnology & Sterile CDMO Showcase
-                      </p>
-                    </div>
+                {/* Editorial Caption Bar (Clean, no noisy icons) */}
+                <div className="border-t border-border/80 bg-surface/95 px-6 py-4 backdrop-blur-xs flex items-center justify-between">
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-text font-serif">
+                      Nexofarm Pavilion · CPHI Milan
+                    </p>
+                    <p className="text-[11px] text-text-muted font-serif italic">
+                      High-Tech Biotechnology & Sterile CDMO Showcase
+                    </p>
                   </div>
 
-                  <span className="hidden sm:inline-flex items-center gap-1 rounded-full border border-accent/30 bg-accent/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-accent">
-                    <Award size={12} />
+                  <span className="hidden sm:inline-block rounded-full border border-accent/30 bg-accent/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-accent">
                     Italian CDMO
                   </span>
                 </div>
@@ -209,57 +98,58 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Repositioned & Elevated Industry Metrics Ribbon (Full Width, Architectural Breathing Room) */}
-        <div className="mt-16 w-full rounded-2xl border border-border/90 bg-surface/85 shadow-sm backdrop-blur-md">
-          <div className="grid grid-cols-2 divide-y divide-border/60 sm:grid-cols-4 sm:divide-y-0 sm:divide-x sm:divide-border/60">
+        {/* Elevated Industry Metrics: Vertical Stack on Mobile, 4 Columns on Desktop */}
+        <div className="mt-14 sm:mt-16 w-full rounded-2xl border border-border/90 bg-surface/85 shadow-sm backdrop-blur-md overflow-hidden">
+          {/* Stacks vertically on mobile/tablet (1 column) to provide ample space, and 4 columns on lg */}
+          <div className="flex flex-col divide-y divide-border/60 lg:grid lg:grid-cols-4 lg:divide-y-0 lg:divide-x">
             {/* Metric 1 */}
-            <div className="p-6 sm:p-7 text-center">
-              <div className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-accent tracking-tight">
+            <div className="py-6 px-6 sm:py-7 sm:px-8 text-center">
+              <div className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-accent tracking-tight">
                 {t.hero.stat1Value}
               </div>
-              <p className="mt-2 text-xs font-bold uppercase tracking-[0.16em] text-text">
+              <p className="mt-2 text-xs font-bold uppercase tracking-[0.18em] text-text font-serif">
                 {t.hero.stat1Label}
               </p>
-              <p className="mt-1 text-[11px] text-text-muted">
+              <p className="mt-1 text-xs text-text-muted font-serif italic">
                 Sella Farmaceutici (1920) Heritage
               </p>
             </div>
 
             {/* Metric 2 */}
-            <div className="p-6 sm:p-7 text-center">
-              <div className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-primary tracking-tight">
+            <div className="py-6 px-6 sm:py-7 sm:px-8 text-center">
+              <div className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-primary tracking-tight">
                 {t.hero.stat2Value}
               </div>
-              <p className="mt-2 text-xs font-bold uppercase tracking-[0.16em] text-text">
+              <p className="mt-2 text-xs font-bold uppercase tracking-[0.18em] text-text font-serif">
                 {t.hero.stat2Label}
               </p>
-              <p className="mt-1 text-[11px] text-text-muted">
+              <p className="mt-1 text-xs text-text-muted font-serif italic">
                 Automated Veneto Cleanroom Surface
               </p>
             </div>
 
             {/* Metric 3 */}
-            <div className="p-6 sm:p-7 text-center">
-              <div className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-accent tracking-tight">
+            <div className="py-6 px-6 sm:py-7 sm:px-8 text-center">
+              <div className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-accent tracking-tight">
                 {t.hero.stat3Value}
               </div>
-              <p className="mt-2 text-xs font-bold uppercase tracking-[0.16em] text-text">
+              <p className="mt-2 text-xs font-bold uppercase tracking-[0.18em] text-text font-serif">
                 {t.hero.stat3Label}
               </p>
-              <p className="mt-1 text-[11px] text-text-muted">
+              <p className="mt-1 text-xs text-text-muted font-serif italic">
                 Total Annual Single-Dose Throughput
               </p>
             </div>
 
             {/* Metric 4 */}
-            <div className="p-6 sm:p-7 text-center">
-              <div className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-primary tracking-tight">
+            <div className="py-6 px-6 sm:py-7 sm:px-8 text-center">
+              <div className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-primary tracking-tight">
                 {t.hero.stat4Value}
               </div>
-              <p className="mt-2 text-xs font-bold uppercase tracking-[0.16em] text-text">
+              <p className="mt-2 text-xs font-bold uppercase tracking-[0.18em] text-text font-serif">
                 {t.hero.stat4Label}
               </p>
-              <p className="mt-1 text-[11px] text-text-muted">
+              <p className="mt-1 text-xs text-text-muted font-serif italic">
                 AIFA, ISO 22716 & EU GMP Certified
               </p>
             </div>

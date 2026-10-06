@@ -2,11 +2,11 @@
 
 :root {
   /* ==========================================================================
-     FONTS - TRADITIONAL ITALIAN & MODERN BIOTECH
+     FONTS - TRADITIONAL ITALIAN & TIMELESS EDITORIAL
      ========================================================================== */
-  --font-serif: "Cormorant Garamond", Georgia, serif;
-  --font-display: "Cinzel", Georgia, serif;
-  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-serif: "Bodoni Moda", "Cormorant Garamond", Georgia, serif;
+  --font-display: "Cinzel", "Bodoni Moda", serif;
+  --font-sans: "EB Garamond", "Cormorant Garamond", Georgia, serif;
 
   /* ==========================================================================
      COLORS - BRAND (ITALIAN RACING / FORESTS & VENETIAN RED)

@@ -60,7 +60,7 @@ export function Contact({ onOpenPrivacy }: ContactProps) {
       <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-12 lg:px-8">
         {/* Left Column: Localized Corporate Information */}
         <div className="lg:col-span-5">
-          <span className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-primary">
+          <span className="hidden sm:inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-primary">
             {t.contact.eyebrow}
           </span>
 

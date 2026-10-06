@@ -1,50 +1,36 @@
 import { useState } from "react";
-import {
-  CheckCircle2,
-  ChevronRight,
-  ClipboardCheck,
-  Factory,
-  FileCheck2,
-  FlaskConical,
-  PackageCheck,
-  Search,
-  ShieldCheck,
-  TestTube,
-} from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
-
-const processIcons = [Search, FlaskConical, TestTube, Factory, PackageCheck];
 
 const stageMeta = [
   {
+    romanNumeral: "Phase I",
     phaseTag: "Discovery & Blueprint",
     compliance: "Target Product Profile (TPP)",
     timeline: "Weeks 1–3",
-    icon: Search,
   },
   {
+    romanNumeral: "Phase II",
     phaseTag: "Formulation Science",
     compliance: "HPLC & Organoleptic Assay",
     timeline: "Weeks 4–8",
-    icon: FlaskConical,
   },
   {
+    romanNumeral: "Phase III",
     phaseTag: "Clinical Verification",
     compliance: "ICH Q1A Stability Protocols",
     timeline: "Weeks 9–16",
-    icon: TestTube,
   },
   {
+    romanNumeral: "Phase IV",
     phaseTag: "Cleanroom Compounding",
     compliance: "EU GMP / ISO 22716 Cleanroom",
     timeline: "Weeks 17–20",
-    icon: Factory,
   },
   {
+    romanNumeral: "Phase V",
     phaseTag: "European Commercial Release",
     compliance: "Qualified Person (QP) Release",
     timeline: "Weeks 21–24",
-    icon: PackageCheck,
   },
 ];
 
@@ -54,204 +40,148 @@ export function Process() {
 
   const steps = t.process.steps;
   const activeStep = steps[activeStepIndex] || steps[0];
-  const ActiveIcon = processIcons[activeStepIndex % processIcons.length];
   const activeMeta = stageMeta[activeStepIndex] || stageMeta[0];
 
   return (
-    <section id="process" className="bg-surface py-28 border-b border-border">
+    <section id="process" className="bg-surface py-24 sm:py-28 border-b border-border">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-primary">
-            <ClipboardCheck size={14} />
-            <span>{t.process.eyebrow}</span>
-          </span>
+          {/* Eyebrow: Hidden on mobile to avoid clutter */}
+          <div className="hidden sm:inline-block">
+            <span className="rounded-full border border-primary/20 bg-primary/5 px-4 py-1 text-xs font-serif italic text-primary">
+              {t.process.eyebrow}
+            </span>
+          </div>
 
-          <h2 className="mt-5 font-serif text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-text">
+          <h2 className="mt-4 sm:mt-5 font-serif text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-text">
             {t.process.title}
           </h2>
 
-          <p className="mt-6 text-base sm:text-lg leading-relaxed text-text-secondary">
+          <p className="mt-5 text-base sm:text-lg leading-relaxed text-text-secondary font-serif">
             {t.process.subtitle}
           </p>
         </div>
 
-        {/* Connected Interactive Stepper (Desktop Horizontal Pipeline) */}
-        <div className="mt-16 hidden lg:block">
-          <div className="relative">
-            {/* Connecting Track Line */}
-            <div className="absolute top-7 left-12 right-12 h-0.5 bg-border -z-0" />
-            <div
-              className="absolute top-7 left-12 h-0.5 bg-primary transition-all duration-500 -z-0"
-              style={{
-                width: `${(activeStepIndex / (steps.length - 1)) * 88}%`,
-              }}
-            />
+        {/* Traditional Horizontal Phase Stepper (Desktop) */}
+        <div className="mt-14 hidden lg:block">
+          <div className="grid grid-cols-5 gap-3 border-b border-border pb-4">
+            {steps.map((step, idx) => {
+              const isActive = idx === activeStepIndex;
+              const meta = stageMeta[idx];
 
-            {/* Stepper Node Buttons */}
-            <div className="relative z-10 flex justify-between">
-              {steps.map((step, idx) => {
-                const Icon = processIcons[idx % processIcons.length];
-                const isActive = idx === activeStepIndex;
-                const isPassed = idx < activeStepIndex;
-
-                return (
-                  <button
-                    key={step.number}
-                    onClick={() => setActiveStepIndex(idx)}
-                    className="group flex flex-col items-center focus:outline-none cursor-pointer"
+              return (
+                <button
+                  key={step.number}
+                  onClick={() => setActiveStepIndex(idx)}
+                  className={`text-left p-3.5 rounded-xl transition-all cursor-pointer ${
+                    isActive
+                      ? "bg-background border border-primary/30 shadow-2xs"
+                      : "hover:bg-background/60"
+                  }`}
+                >
+                  <span
+                    className={`text-xs font-serif font-bold uppercase tracking-wider block ${
+                      isActive ? "text-primary" : "text-text-muted"
+                    }`}
                   >
-                    <div
-                      className={`flex h-14 w-14 items-center justify-center rounded-full border-2 transition-all duration-300 ${
-                        isActive
-                          ? "border-primary bg-primary text-white shadow-md scale-110"
-                          : isPassed
-                          ? "border-primary bg-primary/10 text-primary"
-                          : "border-border bg-surface text-text-muted hover:border-primary/40 hover:text-text"
-                      }`}
-                    >
-                      {isPassed ? <CheckCircle2 size={22} /> : <Icon size={20} />}
-                    </div>
-
-                    <span
-                      className={`mt-3 text-xs font-bold uppercase tracking-wider transition-colors ${
-                        isActive ? "text-primary" : "text-text-muted group-hover:text-text"
-                      }`}
-                    >
-                      Phase {step.number}
-                    </span>
-
-                    <span className="text-[11px] text-text-secondary max-w-[130px] text-center truncate mt-0.5 font-medium">
-                      {step.title}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
+                    {meta.romanNumeral}
+                  </span>
+                  <p
+                    className={`font-serif text-sm mt-1 truncate ${
+                      isActive ? "text-text font-semibold" : "text-text-secondary"
+                    }`}
+                  >
+                    {step.title}
+                  </p>
+                </button>
+              );
+            })}
           </div>
         </div>
 
-        {/* Active Stage Spotlight Feature Card (Academic Dossier Quality) */}
-        <div className="mt-12 overflow-hidden rounded-3xl border border-border bg-background p-8 sm:p-12 shadow-sm transition-all duration-500">
-          <div className="grid gap-10 lg:grid-cols-12 items-center">
-            {/* Left Column: Stage Detail & Deliverable (Col 1-7) */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="flex flex-wrap items-center gap-3">
-                <span className="font-serif text-3xl sm:text-4xl font-bold text-accent">
-                  Phase {activeStep.number}
-                </span>
-                <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
-                  {activeMeta.phaseTag}
-                </span>
-                <span className="text-xs font-medium text-text-muted bg-surface px-3 py-1 rounded-full border border-border">
-                  Timeline: {activeMeta.timeline}
-                </span>
-              </div>
-
-              <h3 className="font-serif text-2xl sm:text-3xl font-medium text-text">
-                {activeStep.title}
-              </h3>
-
-              <p className="text-base sm:text-lg leading-relaxed text-text-secondary">
-                {activeStep.description}
-              </p>
-
-              {/* Deliverable Pill with Academic Rigor */}
-              <div className="rounded-2xl border border-primary/20 bg-primary/5 p-5 sm:p-6">
-                <div className="flex items-start gap-3.5">
-                  <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-white">
-                    <FileCheck2 size={16} />
-                  </div>
-                  <div>
-                    <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-primary">
-                      Formal Industrial Output
-                    </span>
-                    <p className="mt-1 text-sm sm:text-base font-semibold text-text">
-                      {activeStep.deliverable}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Quality & Regulatory Checkpoint */}
-              <div className="flex items-center gap-2 pt-2 text-xs text-text-muted">
-                <ShieldCheck size={15} className="text-accent" />
-                <span>Regulatory Standard: <strong>{activeMeta.compliance}</strong></span>
-              </div>
+        {/* Focused Phase Dossier Card - Architectural, Framed & Spacious */}
+        <div className="mt-8 sm:mt-12 rounded-3xl border border-border/90 bg-background p-6 sm:p-10 lg:p-12 shadow-sm transition-all duration-300">
+          {/* Top Meta Header */}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-6 border-b border-border/70">
+            <div className="flex items-center gap-3">
+              <span className="font-serif text-2xl sm:text-3xl font-normal text-accent tracking-wide">
+                {activeMeta.romanNumeral}
+              </span>
+              <span className="text-border-strong">•</span>
+              <span className="text-xs font-serif uppercase tracking-widest text-text-muted font-semibold">
+                {activeMeta.phaseTag}
+              </span>
             </div>
 
-            {/* Right Column: Visual Stage Badge & Overview Matrix (Col 8-12) */}
-            <div className="lg:col-span-5">
-              <div className="rounded-2xl border border-border/80 bg-surface p-7 sm:p-8 space-y-5">
-                <div className="flex items-center justify-between pb-4 border-b border-border">
-                  <span className="text-xs font-bold uppercase tracking-wider text-text-muted">
-                    CDMO Turnkey Pipeline
-                  </span>
-                  <span className="text-xs font-semibold text-accent">
-                    Step {activeStepIndex + 1} of {steps.length}
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary border border-primary/20">
-                    <ActiveIcon size={30} />
-                  </div>
-                  <div>
-                    <p className="text-xs text-text-muted uppercase font-bold tracking-wider">
-                      Stage Milestone
-                    </p>
-                    <p className="font-serif text-lg font-medium text-text mt-0.5">
-                      {activeMeta.phaseTag}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="space-y-2.5 pt-2">
-                  <div className="flex items-center justify-between text-xs py-1.5 border-t border-border/60">
-                    <span className="text-text-muted">Standard Turnaround</span>
-                    <span className="font-semibold text-text">{activeMeta.timeline}</span>
-                  </div>
-                  <div className="flex items-center justify-between text-xs py-1.5 border-t border-border/60">
-                    <span className="text-text-muted">Documentation</span>
-                    <span className="font-semibold text-primary">Audit-Ready Technical File</span>
-                  </div>
-                  <div className="flex items-center justify-between text-xs py-1.5 border-t border-border/60">
-                    <span className="text-text-muted">Industrial Plants</span>
-                    <span className="font-semibold text-text">Schio (VI) & Ivrea (TO)</span>
-                  </div>
-                </div>
-
-                {/* Quick Next Stage Trigger */}
-                <div className="pt-4 flex justify-between items-center">
-                  <button
-                    disabled={activeStepIndex === 0}
-                    onClick={() => setActiveStepIndex((prev) => Math.max(0, prev - 1))}
-                    className="text-xs font-semibold uppercase tracking-wider text-text-muted hover:text-text disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
-                  >
-                    Previous Phase
-                  </button>
-
-                  <button
-                    disabled={activeStepIndex === steps.length - 1}
-                    onClick={() =>
-                      setActiveStepIndex((prev) => Math.min(steps.length - 1, prev + 1))
-                    }
-                    className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary hover:text-accent disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
-                  >
-                    <span>Next Phase</span>
-                    <ChevronRight size={14} />
-                  </button>
-                </div>
-              </div>
+            <div className="flex items-center gap-2">
+              <span className="rounded-full border border-border bg-surface px-3 py-1 text-xs font-serif text-text-muted">
+                Timeline: <strong>{activeMeta.timeline}</strong>
+              </span>
+              <span className="text-xs font-serif text-text-muted ml-2">
+                Step {activeStepIndex + 1} of {steps.length}
+              </span>
             </div>
+          </div>
+
+          {/* Phase Title & Narrative Description */}
+          <div className="mt-6 sm:mt-8 space-y-4">
+            <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal text-text leading-snug">
+              {activeStep.title}
+            </h3>
+
+            <p className="text-base sm:text-lg leading-relaxed text-text-secondary font-serif max-w-4xl">
+              {activeStep.description}
+            </p>
+          </div>
+
+          {/* Formal Industrial Output Box (Framed Deliverable Sheet) */}
+          <div className="mt-8 rounded-2xl border border-primary/25 bg-surface p-6 sm:p-8 shadow-2xs">
+            <span className="text-[11px] font-serif font-bold uppercase tracking-[0.2em] text-primary block">
+              Formal Industrial Output & Regulatory Dossier
+            </span>
+
+            <p className="mt-2 text-base sm:text-lg font-serif font-medium text-text">
+              {activeStep.deliverable}
+            </p>
+
+            <div className="mt-5 pt-4 border-t border-border/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-text-muted font-serif">
+              <span>
+                Regulatory Compliance Standard: <strong className="text-text">{activeMeta.compliance}</strong>
+              </span>
+              <span>
+                Authorized Facilities: <strong className="text-text">Schio (VI) & Ivrea (TO)</strong>
+              </span>
+            </div>
+          </div>
+
+          {/* Stage Progression Controls */}
+          <div className="mt-8 pt-6 border-t border-border/70 flex items-center justify-between">
+            <button
+              disabled={activeStepIndex === 0}
+              onClick={() => setActiveStepIndex((prev) => Math.max(0, prev - 1))}
+              className="text-xs font-serif font-semibold uppercase tracking-widest text-text-muted hover:text-text disabled:opacity-25 disabled:pointer-events-none cursor-pointer transition-colors"
+            >
+              ← Previous Phase
+            </button>
+
+            <button
+              disabled={activeStepIndex === steps.length - 1}
+              onClick={() =>
+                setActiveStepIndex((prev) => Math.min(steps.length - 1, prev + 1))
+              }
+              className="text-xs font-serif font-semibold uppercase tracking-widest text-primary hover:text-accent disabled:opacity-25 disabled:pointer-events-none cursor-pointer transition-colors"
+            >
+              Next Phase →
+            </button>
           </div>
         </div>
 
-        {/* Complete Sequential Pipeline Overview (All 5 Steps Summary Grid) */}
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        {/* 5-Phase Architectural Grid Overview (Clean, Framed Sequential Overview) */}
+        <div className="mt-10 sm:mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {steps.map((step, index) => {
-            const Icon = processIcons[index % processIcons.length];
             const isCurrent = index === activeStepIndex;
+            const meta = stageMeta[index];
 
             return (
               <div
@@ -264,25 +194,24 @@ export function Process() {
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-serif text-xl font-bold text-accent">
-                    {step.number}
+                  <span className="font-serif text-lg font-normal text-accent">
+                    {meta.romanNumeral}
                   </span>
-                  <div className="text-primary">
-                    <Icon size={18} />
-                  </div>
+                  <span className="text-[11px] font-serif text-text-muted">
+                    {meta.timeline}
+                  </span>
                 </div>
 
                 <h4 className="mt-3 font-serif text-base font-medium text-text leading-snug">
                   {step.title}
                 </h4>
 
-                <p className="mt-2 text-xs text-text-secondary line-clamp-2 leading-relaxed">
+                <p className="mt-2 text-xs text-text-secondary line-clamp-2 leading-relaxed font-serif">
                   {step.description}
                 </p>
 
-                <div className="mt-4 pt-3 border-t border-border/70 flex items-center justify-between text-[11px]">
-                  <span className="text-text-muted font-medium">Phase {step.number}</span>
-                  <span className="font-semibold text-primary">View Specs →</span>
+                <div className="mt-4 pt-3 border-t border-border/60 text-[11px] font-serif text-primary font-semibold">
+                  View Specifications →
                 </div>
               </div>
             );
